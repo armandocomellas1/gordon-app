@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($root = \"c:\\\\Users\\\\arman\\\\Documents\\\\doctor\"; $json = @\\(\"package.json\",\".eslintrc.json\",\"jsconfig.json\",\"entities\\\\Lecture.json\",\"entities\\\\Enrollment.json\",\"entities\\\\Progress.json\"\\); foreach \\($f in $json\\) { try { Get-Content \\(Join-Path $root $f\\) -Raw | ConvertFrom-Json | Out-Null; Write-Output \"OK    $f\" } catch { Write-Output \"FAIL  $f  -> $\\($_.Exception.Message\\)\" } })"
+    ]
+  }
+}

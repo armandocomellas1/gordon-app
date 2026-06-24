@@ -1,0 +1,26 @@
+{
+  "name": "CourseResource",
+  "type": "object",
+  "description": "Downloadable course material included with the Certificate Course — most importantly the 300-page written extracurricular PDF. Enrolled students only.",
+  "properties": {
+    "title_he": { "type": "string" },
+    "title_en": { "type": "string" },
+    "description_he": { "type": "string" },
+    "description_en": { "type": "string" },
+    "kind": {
+      "type": "string",
+      "enum": ["pdf", "doc", "link"],
+      "default": "pdf"
+    },
+    "url": { "type": "string", "description": "File/link URL (signed in production)." },
+    "size_mb": { "type": "number", "description": "Approx file size, for display." },
+    "pages": { "type": "number", "description": "Page count, for display (e.g. 300)." },
+    "enrolled_only": { "type": "boolean", "default": true },
+    "order": { "type": "number", "default": 0 }
+  },
+  "required": ["title_he", "url"],
+  "rls": {
+    "read": { "any": true },
+    "write": { "user_condition": { "role": "admin" } }
+  }
+}

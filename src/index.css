@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 280 40% 99%;
+    --foreground: 266 35% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 266 35% 14%;
+    --primary: 266 60% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 280 45% 95%;
+    --secondary-foreground: 266 35% 20%;
+    --muted: 280 30% 95%;
+    --muted-foreground: 266 12% 42%;
+    --accent: 36 92% 55%;
+    --accent-foreground: 266 35% 14%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 266 30% 88%;
+    --input: 266 30% 88%;
+    --ring: 266 60% 55%;
+    --shadow-soft: 0 10px 30px -12px hsl(266 50% 30% / 0.18);
+    --glow-1: 266 60% 95%;
+    --glow-2: 36 80% 94%;
+  }
+
+  .dark {
+    --background: 266 30% 8%;
+    --foreground: 280 20% 92%;
+    --card: 266 28% 12%;
+    --card-foreground: 280 20% 92%;
+    --primary: 266 72% 67%;
+    --primary-foreground: 266 45% 10%;
+    --secondary: 266 24% 18%;
+    --secondary-foreground: 280 20% 90%;
+    --muted: 266 20% 18%;
+    --muted-foreground: 266 14% 64%;
+    --accent: 36 90% 60%;
+    --accent-foreground: 266 45% 10%;
+    --destructive: 0 70% 58%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 266 18% 26%;
+    --input: 266 18% 26%;
+    --ring: 266 70% 62%;
+    --shadow-soft: 0 14px 34px -14px hsl(266 80% 3% / 0.65);
+    --glow-1: 266 50% 20%;
+    --glow-2: 280 40% 15%;
+  }
+
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(60rem 60rem at 100% -10%, hsl(var(--glow-1)) 0%, transparent 55%),
+      radial-gradient(50rem 50rem at -10% 0%, hsl(var(--glow-2)) 0%, transparent 45%);
+    background-attachment: fixed;
+    color-scheme: light dark;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply container py-8 md:py-12 animate-fade-in;
+  }
+  .card-soft {
+    @apply rounded-lg border bg-card text-card-foreground;
+    box-shadow: var(--shadow-soft);
+  }
+  .shimmer {
+    @apply relative overflow-hidden bg-muted;
+  }
+  .shimmer::after {
+    content: "";
+    @apply absolute inset-0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(0 0% 100% / 0.55),
+      transparent
+    );
+    transform: translateX(-100%);
+    animation: shimmer 1.4s infinite;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Print: show only the certificate sheet. */
+@media print {
+  body {
+    background: #fff !important;
+  }
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  .cert-sheet {
+    box-shadow: none !important;
+    border: 2px solid hsl(266 60% 48%) !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Keep embedded players 16:9 and rounded. */
+.aspect-video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 0.9rem;
+  overflow: hidden;
+}
+.aspect-video-frame > iframe,
+.aspect-video-frame > video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}

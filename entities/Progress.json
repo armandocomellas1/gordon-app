@@ -1,0 +1,26 @@
+{
+  "name": "Progress",
+  "type": "object",
+  "description": "Per-user, per-lecture watch progress. Enables resume-where-you-left-off and a 'completed' badge.",
+  "properties": {
+    "user_email": { "type": "string", "format": "email" },
+    "lecture_id": { "type": "string", "description": "Id of the Lecture." },
+    "lang": {
+      "type": "string",
+      "enum": ["he", "en"],
+      "description": "Which language track was watched."
+    },
+    "position_seconds": {
+      "type": "number",
+      "default": 0,
+      "description": "Last playhead position."
+    },
+    "completed": { "type": "boolean", "default": false },
+    "last_watched": { "type": "string", "format": "date-time" }
+  },
+  "required": ["user_email", "lecture_id"],
+  "rls": {
+    "read": { "user_email": "{{user.email}}" },
+    "write": { "user_email": "{{user.email}}" }
+  }
+}

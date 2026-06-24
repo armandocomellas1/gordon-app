@@ -1,0 +1,41 @@
+{
+  "name": "Enrollment",
+  "type": "object",
+  "description": "Grants a user access to the full course. Mirrors the WiX model of '1 year access to streaming lectures'.",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email of the enrolled user."
+    },
+    "plan": {
+      "type": "string",
+      "enum": ["full_course", "single_lecture", "trial"],
+      "default": "full_course",
+      "description": "What the enrollment unlocks."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "revoked"],
+      "default": "active"
+    },
+    "granted_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When access was granted."
+    },
+    "expires_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When access expires (granted + 1 year by default)."
+    },
+    "note": { "type": "string", "description": "Admin note (e.g. order id)." }
+  },
+  "required": ["user_email", "plan"],
+  "rls": {
+    "read": {
+      "$or": [{ "user_email": "{{user.email}}" }, { "user_condition": { "role": "admin" } }]
+    },
+    "write": { "user_condition": { "role": "admin" } }
+  }
+}

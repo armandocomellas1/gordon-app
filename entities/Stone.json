@@ -1,0 +1,24 @@
+{
+  "name": "Stone",
+  "type": "object",
+  "description": "An entry in the Stone Reference Library — bridges gemology, the Hebrew Scriptures (breastplate / tribes), and crystal-healing properties. The numbered tumbled-stone photos (e.g. 28-36) map onto image_url.",
+  "properties": {
+    "number": { "type": "number", "description": "Catalog number (matches the printed stone grid)." },
+    "name_he": { "type": "string" },
+    "name_en": { "type": "string" },
+    "family": { "type": "string", "description": "Mineral family, e.g. Quartz, Jasper, Agate, Beryl." },
+    "color": { "type": "string" },
+    "hardness": { "type": "string", "description": "Mohs scale, e.g. '7'." },
+    "properties_he": { "type": "string", "description": "Healing/behavioural properties (Hebrew)." },
+    "properties_en": { "type": "string", "description": "Healing/behavioural properties (English)." },
+    "scripture_ref": { "type": "string", "description": "e.g. 'Exodus 28:18' or 'Ezekiel 28:13'." },
+    "tribe": { "type": "string", "description": "Associated tribe of Israel, if any." },
+    "image_url": { "type": "string", "description": "Photo of the tumbled stone." },
+    "is_published": { "type": "boolean", "default": true }
+  },
+  "required": ["name_he"],
+  "rls": {
+    "read": { "any": true },
+    "write": { "user_condition": { "role": "admin" } }
+  }
+}

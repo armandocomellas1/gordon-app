@@ -1,0 +1,35 @@
+{
+  "name": "KitShipment",
+  "type": "object",
+  "description": "Shipping record for the physical stone kit included with the Certificate Course. Student submits their address; admin marks it shipped with tracking.",
+  "properties": {
+    "user_email": { "type": "string", "format": "email" },
+    "status": {
+      "type": "string",
+      "enum": ["requested", "preparing", "shipped", "delivered", "cancelled"],
+      "default": "requested"
+    },
+    "recipient_name": { "type": "string" },
+    "phone": { "type": "string" },
+    "address1": { "type": "string" },
+    "address2": { "type": "string" },
+    "city": { "type": "string" },
+    "region": { "type": "string" },
+    "postal_code": { "type": "string" },
+    "country": { "type": "string" },
+    "carrier": { "type": "string" },
+    "tracking": { "type": "string" },
+    "requested_date": { "type": "string", "format": "date-time" },
+    "shipped_date": { "type": "string", "format": "date-time" },
+    "note": { "type": "string" }
+  },
+  "required": ["user_email", "recipient_name", "address1", "city", "country"],
+  "rls": {
+    "read": {
+      "$or": [{ "user_email": "{{user.email}}" }, { "user_condition": { "role": "admin" } }]
+    },
+    "write": {
+      "$or": [{ "user_email": "{{user.email}}" }, { "user_condition": { "role": "admin" } }]
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Lecture",
+  "type": "object",
+  "description": "A single lecture in Dr. Gavrielov's 20-part course. Holds bilingual (Hebrew/English) metadata and a provider-agnostic video source per language.",
+  "properties": {
+    "order": {
+      "type": "number",
+      "description": "Lecture number 1-20, used for ordering."
+    },
+    "code": {
+      "type": "string",
+      "description": "Source filename code, e.g. L05_C07."
+    },
+    "title_he": { "type": "string", "description": "Hebrew title." },
+    "title_en": { "type": "string", "description": "English (AI-translated) title." },
+    "description_he": { "type": "string", "description": "Hebrew description." },
+    "description_en": { "type": "string", "description": "English description." },
+    "thumbnail_url": { "type": "string", "description": "Poster image URL." },
+    "duration_seconds": { "type": "number", "description": "Runtime in seconds." },
+    "video_provider": {
+      "type": "string",
+      "enum": ["youtube", "mux", "vimeo", "direct"],
+      "default": "youtube",
+      "description": "Which player/source resolver to use."
+    },
+    "video_he_source": {
+      "type": "string",
+      "description": "Hebrew video source: YouTube id, Mux playback id, Vimeo id, or direct URL."
+    },
+    "video_en_source": {
+      "type": "string",
+      "description": "English (translated) video source. Empty until the HeyGen translation is published."
+    },
+    "translation_status": {
+      "type": "string",
+      "enum": ["pending", "in_progress", "done"],
+      "default": "pending",
+      "description": "State of the English translation for this lecture."
+    },
+    "free_preview": {
+      "type": "boolean",
+      "default": false,
+      "description": "If true, playable by anyone (no enrollment required)."
+    },
+    "is_published": {
+      "type": "boolean",
+      "default": false,
+      "description": "If false, hidden from the public catalog (draft)."
+    }
+  },
+  "required": ["order", "title_he"],
+  "rls": {
+    "read": { "$or": [{ "is_published": true }, { "created_by": "{{user.email}}" }] },
+    "write": { "user_condition": { "role": "admin" } }
+  }
+}

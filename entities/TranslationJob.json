@@ -1,0 +1,46 @@
+{
+  "name": "TranslationJob",
+  "type": "object",
+  "description": "Platform-side mirror of one lecture's run through the off-LAN translation pipeline (Codex foreman/worker → HeyGen → stitch → publish). The external foreman/worker POSTs status updates to a Base44 backend function which upserts this record; the Admin 'Translation' tab renders it as a Foreman Dashboard.",
+  "properties": {
+    "lecture_id": { "type": "string", "description": "Id of the Lecture this job translates." },
+    "lecture_code": { "type": "string", "description": "Source code, e.g. L09 (maps to Lecture_09.mp4)." },
+    "lecture_order": { "type": "number", "description": "1-20, for ordering the dashboard." },
+    "source_file": { "type": "string", "description": "Staging filename, e.g. Lecture_09.mp4." },
+    "source_size_gb": { "type": "number", "description": "Approx source size in GB (~0.5)." },
+    "worker_id": { "type": "string", "description": "Which Codex CLI worker is handling it." },
+    "status": {
+      "type": "string",
+      "enum": [
+        "queued",
+        "chunking",
+        "uploading",
+        "processing",
+        "downloading",
+        "stitching",
+        "ready",
+        "published",
+        "error"
+      ],
+      "default": "queued",
+      "description": "Current pipeline stage (mirrors the worker's 5 steps + publish)."
+    },
+    "chunks_total": { "type": "number", "default": 0, "description": "Number of 5-15 min chunks." },
+    "chunks_done": { "type": "number", "default": 0, "description": "Chunks fully translated by HeyGen." },
+    "heygen_credits_used": { "type": "number", "default": 0, "description": "HeyGen credits consumed (usage API)." },
+    "heygen_cost_usd": { "type": "number", "default": 0, "description": "HeyGen spend in USD (budget API)." },
+    "throughput": { "type": "string", "description": "Human label, e.g. '2.1x realtime'." },
+    "eta": { "type": "string", "format": "date-time", "description": "Estimated completion time." },
+    "retries": { "type": "number", "default": 0, "description": "How many times a stage was retried." },
+    "last_error": { "type": "string", "description": "Most recent error message, if any." },
+    "output_url": { "type": "string", "description": "Stitched English file URL (becomes Lecture.video_en_source on publish)." },
+    "youtube_url": { "type": "string", "description": "Optional public YouTube URL for the translated lecture." },
+    "started_at": { "type": "string", "format": "date-time" },
+    "completed_at": { "type": "string", "format": "date-time" }
+  },
+  "required": ["lecture_code", "lecture_order"],
+  "rls": {
+    "read": { "user_condition": { "role": "admin" } },
+    "write": { "user_condition": { "role": "admin" } }
+  }
+}

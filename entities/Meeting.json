@@ -1,0 +1,28 @@
+{
+  "name": "Meeting",
+  "type": "object",
+  "description": "One of the 2 personal meetings with Dr. Gavrielov included in the Certificate Course. Student requests a time; admin confirms and adds the video link.",
+  "properties": {
+    "user_email": { "type": "string", "format": "email" },
+    "meeting_no": { "type": "number", "enum": [1, 2], "description": "Which of the 2 included meetings." },
+    "status": {
+      "type": "string",
+      "enum": ["requested", "confirmed", "completed", "cancelled"],
+      "default": "requested"
+    },
+    "requested_datetime": { "type": "string", "format": "date-time" },
+    "confirmed_datetime": { "type": "string", "format": "date-time" },
+    "topic": { "type": "string" },
+    "meeting_link": { "type": "string", "description": "Zoom/Teams link, added by admin on confirm." },
+    "note": { "type": "string" }
+  },
+  "required": ["user_email", "meeting_no"],
+  "rls": {
+    "read": {
+      "$or": [{ "user_email": "{{user.email}}" }, { "user_condition": { "role": "admin" } }]
+    },
+    "write": {
+      "$or": [{ "user_email": "{{user.email}}" }, { "user_condition": { "role": "admin" } }]
+    }
+  }
+}
