@@ -1,4 +1,5 @@
 import { useI18n } from "@/i18n";
+import { LANGS } from "@/i18n/strings";
 import { Languages } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -15,10 +16,7 @@ export default function LanguageSwitch({ className }) {
       aria-label="Language"
     >
       <Languages className="mx-1.5 h-4 w-4 text-muted-foreground" aria-hidden />
-      {[
-        { code: "fr", label: "FR" },
-        { code: "en", label: "EN" },
-      ].map((o) => (
+      {Object.values(LANGS).map((o) => (
         <button
           key={o.code}
           onClick={() => setLang(o.code)}

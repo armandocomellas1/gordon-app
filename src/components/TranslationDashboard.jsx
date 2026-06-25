@@ -44,7 +44,8 @@ const TERMINAL = new Set(["published", "ready"]); // not auto-advanced by the si
 function fmtEta(iso, lang) {
   if (!iso) return "—";
   try {
-    return new Date(iso).toLocaleString(lang === "fr" ? "fr-FR" : "en-GB", {
+    const locales = { he: "he-IL", fr: "fr-FR", ru: "ru-RU" };
+    return new Date(iso).toLocaleString(locales[lang] || "en-GB", {
       day: "2-digit",
       month: "short",
       hour: "2-digit",

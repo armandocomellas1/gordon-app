@@ -26,8 +26,8 @@ export default function Stones() {
     };
   }, []);
 
-  const name = (s) => (lang === "fr" ? s.name_he : s.name_en) || s.name_he || s.name_en;
-  const props = (s) => (lang === "fr" ? s.properties_he : s.properties_en) || s.properties_en || s.properties_he;
+  const name = (s) => (lang === "en" ? s.name_en : s.name_he) || s.name_he || s.name_en;
+  const props = (s) => (lang === "en" ? s.properties_en : s.properties_he) || s.properties_he || s.properties_en;
 
   const families = useMemo(() => {
     if (!stones) return [];
@@ -127,7 +127,7 @@ export default function Stones() {
               </div>
               <h2 className="mt-2 text-2xl font-extrabold">{name(active)}</h2>
               <p className="text-sm text-muted-foreground">
-                {lang === "fr" ? active.name_en : active.name_he}
+                {lang === "en" ? active.name_he : active.name_en}
               </p>
 
               {props(active) && (

@@ -9,7 +9,10 @@ function initialLang() {
   const saved = localStorage.getItem(STORAGE_KEY);
   if (saved && LANGS[saved]) return saved;
   const nav = (navigator.language || "fr").toLowerCase();
-  return nav.startsWith("fr") ? "fr" : nav.startsWith("en") ? "en" : "fr";
+  if (nav.startsWith("he")) return "he";
+  if (nav.startsWith("ru")) return "ru";
+  if (nav.startsWith("en")) return "en";
+  return "fr";
 }
 
 export function I18nProvider({ children }) {
@@ -35,14 +38,18 @@ export function I18nProvider({ children }) {
     [lang]
   );
 
-  const toggle = useCallback(() => setLang((l) => (l === "fr" ? "en" : "fr")), []);
+  const LANG_ORDER = ["fr", "en", "ru", "he"];
+  const toggle = useCallback(() => setLang((l) => {
+    const i = LANG_ORDER.indexOf(l);
+    return LANG_ORDER[(i + 1) % LANG_ORDER.length];
+  }), []);
 
   /** Pick the right field of a bilingual record, with graceful fallback. */
   const pick = useCallback(
     (record, base) => {
       if (!record) return "";
-      // fr maps to _he content (original language); fall back to _en
-      const key = lang === "fr" ? "he" : lang;
+      // fr/ru/he → use _he content (original); en → use _en content
+      const key = lang === "en" ? "en" : "he";
       const primary = record[`${base}_${key}`];
       if (primary) return primary;
       return record[`${base}_en`] || "";

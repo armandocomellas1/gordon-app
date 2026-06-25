@@ -19,7 +19,8 @@ export function formatDuration(seconds, minutesLabel = "min") {
 export function formatDate(iso, lang = "he") {
   if (!iso) return "—";
   try {
-    return new Date(iso).toLocaleDateString(lang === "fr" ? "fr-FR" : "en-GB", {
+    const locales = { he: "he-IL", fr: "fr-FR", ru: "ru-RU" };
+    return new Date(iso).toLocaleDateString(locales[lang] || "en-GB", {
       year: "numeric",
       month: "short",
       day: "numeric",
