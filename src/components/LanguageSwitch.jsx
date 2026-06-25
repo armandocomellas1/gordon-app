@@ -16,7 +16,7 @@ export default function LanguageSwitch({ className }) {
     >
       <Languages className="mx-1.5 h-4 w-4 text-muted-foreground" aria-hidden />
       {[
-        { code: "he", label: "עברית" },
+        { code: "fr", label: "FR" },
         { code: "en", label: "EN" },
       ].map((o) => (
         <button

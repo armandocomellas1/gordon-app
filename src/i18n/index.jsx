@@ -5,12 +5,11 @@ const I18nContext = createContext(null);
 const STORAGE_KEY = "gavrielov.lang";
 
 function initialLang() {
-  if (typeof window === "undefined") return "he";
+  if (typeof window === "undefined") return "fr";
   const saved = localStorage.getItem(STORAGE_KEY);
   if (saved && LANGS[saved]) return saved;
-  // Default to Hebrew (primary audience); fall back to browser hint.
-  const nav = (navigator.language || "he").toLowerCase();
-  return nav.startsWith("he") ? "he" : nav.startsWith("en") ? "en" : "he";
+  const nav = (navigator.language || "fr").toLowerCase();
+  return nav.startsWith("fr") ? "fr" : nav.startsWith("en") ? "en" : "fr";
 }
 
 export function I18nProvider({ children }) {
@@ -36,16 +35,17 @@ export function I18nProvider({ children }) {
     [lang]
   );
 
-  const toggle = useCallback(() => setLang((l) => (l === "he" ? "en" : "he")), []);
+  const toggle = useCallback(() => setLang((l) => (l === "fr" ? "en" : "fr")), []);
 
   /** Pick the right field of a bilingual record, with graceful fallback. */
   const pick = useCallback(
     (record, base) => {
       if (!record) return "";
-      const primary = record[`${base}_${lang}`];
+      // fr maps to _he content (original language); fall back to _en
+      const key = lang === "fr" ? "he" : lang;
+      const primary = record[`${base}_${key}`];
       if (primary) return primary;
-      const other = lang === "he" ? "en" : "he";
-      return record[`${base}_${other}`] || "";
+      return record[`${base}_en`] || "";
     },
     [lang]
   );
