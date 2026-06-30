@@ -66,7 +66,7 @@ export default function MyAccount() {
             <div key={d.label} className="flex flex-col items-center gap-1.5 text-center">
               <span
                 className={`grid h-11 w-11 place-items-center rounded-xl ${
-                  d.done ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"
+                  d.done ? "bg-primary/10 text-goldink" : "bg-muted text-muted-foreground"
                 }`}
               >
                 {d.done ? <d.icon className="h-5 w-5" /> : <Lock className="h-4 w-4" />}
@@ -120,7 +120,7 @@ export default function MyAccount() {
         {/* Progress + certificate */}
         <Card className="p-6">
           <h2 className="flex items-center gap-2 font-bold">
-            <GraduationCap className="h-5 w-5 text-primary" />
+            <GraduationCap className="h-5 w-5 text-goldink" />
             {t("account.progress")}
           </h2>
           <p className="mt-4 text-sm text-muted-foreground">

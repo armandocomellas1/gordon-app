@@ -18,7 +18,7 @@
     --secondary-foreground: 30 6% 24%;
     --muted: 40 12% 93%;
     --muted-foreground: 30 5% 38%; /* ~#575757 body gray */
-    --accent: 48 88% 38%; /* #cca300 — darker active gold */
+    --accent: 49 88% 40%; /* ~#cca300 — darker active gold */
     --accent-foreground: 30 14% 13%;
     --destructive: 0 64% 46%;
     --destructive-foreground: 0 0% 100%;
@@ -32,6 +32,9 @@
     --ink-2: 28 5% 28%;
     --on-ink: 0 0% 100%; /* white menu text */
     --gold: 51 80% 52%; /* brand gold tuned for legibility on charcoal */
+    /* Deep "antique" gold for gold TEXT/ICONS on light surfaces — bright gold
+       (#d9b91a) is brand-correct as a fill but unreadable as text on white. */
+    --gold-ink: 46 86% 30%;
     /* Barely-there warm paper wash (replaces the old purple glow). */
     --glow-1: 45 35% 96%;
     --glow-2: 40 30% 96%;
@@ -60,6 +63,7 @@
     --ink-2: 28 5% 28%;
     --on-ink: 0 0% 100%;
     --gold: 49 78% 58%;
+    --gold-ink: 49 76% 60%; /* on dark surfaces, gold text can stay bright */
     --glow-1: 40 30% 13%;
     --glow-2: 28 14% 11%;
   }
@@ -153,6 +157,17 @@
   100% {
     transform: translateX(100%);
   }
+}
+
+/* The certificate is always a white sheet (on screen and in print), so force
+   light-theme ink + deep gold inside it regardless of the app theme — otherwise
+   dark-mode tokens render light text/bright gold on white and become unreadable. */
+.cert-sheet {
+  --foreground: 30 6% 22%;
+  --card-foreground: 30 6% 22%;
+  --muted-foreground: 30 5% 38%;
+  --gold-ink: 46 86% 30%;
+  color: hsl(var(--foreground));
 }
 
 /* Print: show only the certificate sheet. */

@@ -36,7 +36,7 @@ export default function MeetingsSection({ user, hasAccess }) {
     return (
       <Card className="p-6">
         <h2 className="flex items-center gap-2 font-bold">
-          <CalendarDays className="h-5 w-5 text-primary" />
+          <CalendarDays className="h-5 w-5 text-goldink" />
           {t("meetings.title")}
         </h2>
         <p className="mt-3 flex items-center gap-1.5 text-sm text-muted-foreground">
@@ -59,7 +59,7 @@ export default function MeetingsSection({ user, hasAccess }) {
     <Card className="p-6">
       <div className="flex items-center justify-between">
         <h2 className="flex items-center gap-2 font-bold">
-          <CalendarDays className="h-5 w-5 text-primary" />
+          <CalendarDays className="h-5 w-5 text-goldink" />
           {t("meetings.title")}
         </h2>
         <span className="text-xs text-muted-foreground">{t("meetings.included", { n: used })}</span>

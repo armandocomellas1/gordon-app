@@ -24,7 +24,7 @@ export default function StonesAdmin() {
     <Card className="p-5 md:p-6">
       <div className="mb-4">
         <h2 className="flex items-center gap-2 font-bold">
-          <Gem className="h-5 w-5 text-primary" />
+          <Gem className="h-5 w-5 text-goldink" />
           {t("admin.stones.title")}
         </h2>
         <p className="text-sm text-muted-foreground">{t("admin.stones.subtitle")}</p>

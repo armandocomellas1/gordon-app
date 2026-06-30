@@ -152,7 +152,7 @@ export default function LectureDetail() {
 
           {/* Title + meta */}
           <div className="mt-5">
-            <span className="text-xs font-semibold uppercase tracking-wide text-primary">
+            <span className="text-xs font-semibold uppercase tracking-wide text-goldink">
               {t("player.lessonOf", { n: idx >= 0 ? idx + 1 : lecture.order, total })}
             </span>
             <h1 className="mt-1 text-2xl font-extrabold md:text-3xl">{title}</h1>
@@ -252,7 +252,7 @@ export default function LectureDetail() {
         <aside className="lg:col-span-1">
           <div className="card-soft overflow-hidden lg:sticky lg:top-20">
             <div className="flex items-center gap-2 border-b border-border p-4">
-              <ListVideo className="h-4 w-4 text-primary" />
+              <ListVideo className="h-4 w-4 text-goldink" />
               <div>
                 <p className="text-sm font-bold leading-tight">{t("player.playlist")}</p>
                 <p className="text-[11px] text-muted-foreground">{t("lectures.subtitle")}</p>
@@ -276,7 +276,7 @@ export default function LectureDetail() {
                         {done ? (
                           <CheckCircle2 className="h-5 w-5 text-emerald-500" />
                         ) : isCurrent ? (
-                          <PlayCircle className="h-5 w-5 text-primary" />
+                          <PlayCircle className="h-5 w-5 text-goldink" />
                         ) : locked ? (
                           <Lock className="h-4 w-4 text-muted-foreground" />
                         ) : (

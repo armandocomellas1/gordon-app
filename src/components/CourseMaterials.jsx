@@ -21,7 +21,7 @@ export default function CourseMaterials({ hasAccess }) {
   return (
     <Card className="p-6">
       <h2 className="flex items-center gap-2 font-bold">
-        <FileText className="h-5 w-5 text-primary" />
+        <FileText className="h-5 w-5 text-goldink" />
         {t("materials.title")}
       </h2>
 
@@ -37,7 +37,7 @@ export default function CourseMaterials({ hasAccess }) {
             const locked = r.enrolled_only && !hasAccess;
             return (
               <li key={r.id} className="flex items-center gap-3 py-3">
-                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-secondary text-primary">
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-secondary text-goldink">
                   <FileText className="h-4 w-4" />
                 </span>
                 <div className="min-w-0 flex-1">

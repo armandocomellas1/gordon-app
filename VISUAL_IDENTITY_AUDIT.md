@@ -98,6 +98,21 @@ already used "Crystal Healing" and were left intact.
 
 ---
 
+## Post-review legibility pass
+
+An adversarial review caught a real regression: bright brand gold `#d9b91a` is correct
+as a **fill** (gold buttons), but unreadable as **text/icons on white** (~1.9:1) in the
+light theme. Fixed systemically:
+
+- Added a `--gold-ink` token — a deep "antique" gold on light surfaces, bright gold on
+  dark — and routed all gold **text/icons** (`text-goldink`) through it, while gold
+  **fills** keep the bright `#d9b91a`. Legible in both themes, brand stays gold.
+- The certificate (always a white sheet) now forces light-theme ink + deep gold so it's
+  readable on screen and in print in either theme.
+- Squared the `accent` badge tone and pinned the lecture play/lock icons to charcoal so
+  they read on their white disc in dark mode too.
+- Retuned `--accent` to a truer `#cca300`.
+
 ## Notes & boundaries
 
 - **Navigation inventory** still follows the app's real routes (Home, Lectures, Stone

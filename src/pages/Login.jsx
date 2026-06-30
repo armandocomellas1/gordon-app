@@ -63,7 +63,7 @@ export default function Login() {
     <div className="container-page grid min-h-[70vh] place-items-center">
       <Card className="w-full max-w-md p-8">
         <div className="text-center">
-          <span className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary">
+          <span className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-goldink">
             <LogIn className="h-6 w-6" />
           </span>
           <h1 className="mt-4 text-2xl font-extrabold">{t("login.title")}</h1>

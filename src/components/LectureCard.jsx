@@ -37,7 +37,7 @@ export default function LectureCard({ lecture, locked, progress }) {
         </span>
         <div className="absolute inset-0 grid place-items-center bg-black/0 transition-colors group-hover:bg-black/25">
           <span className="grid h-12 w-12 place-items-center rounded-full bg-white/90 opacity-0 shadow transition-opacity group-hover:opacity-100">
-            {locked ? <Lock className="h-5 w-5 text-foreground" /> : <Play className="h-5 w-5 text-primary" />}
+            {locked ? <Lock className="h-5 w-5 text-ink" /> : <Play className="h-5 w-5 text-ink" />}
           </span>
         </div>
         {pct > 0 && (

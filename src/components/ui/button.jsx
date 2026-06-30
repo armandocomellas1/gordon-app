@@ -4,11 +4,11 @@ import { cn } from "@/lib/utils";
 const variants = {
   default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm",
   secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-  outline: "border border-border bg-transparent hover:border-primary hover:text-primary",
+  outline: "border border-border bg-transparent hover:border-primary hover:text-goldink",
   ghost: "hover:bg-secondary",
   accent: "bg-accent text-accent-foreground hover:bg-accent/90 shadow-sm",
   destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-  link: "text-primary underline-offset-4 hover:underline",
+  link: "text-goldink underline-offset-4 hover:underline",
 };
 
 const sizes = {

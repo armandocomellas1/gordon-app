@@ -21,7 +21,7 @@ function navItems(t, isAdmin) {
   return items;
 }
 
-/* The brand identity is the NAME, not an icon — a gold serif monogram on
+/* The brand identity is the NAME, not an icon — a gold sans monogram on
    charcoal (ג, the initial of גבריאלוב) keeps the Hebrew-first feel of the
    original site without a generic diamond. */
 function Brand() {
@@ -31,11 +31,11 @@ function Brand() {
       <span className="brand-mark h-10 w-10 text-lg" aria-hidden>
         ג
       </span>
-      <span className="leading-tight">
+      <span className="min-w-0 leading-tight">
         <span className="block text-base font-extrabold tracking-wide" style={{ color: "hsl(var(--on-ink))" }}>
           {t("app.title")}
         </span>
-        <span className="block text-[10.5px] font-medium tracking-wide" style={{ color: "hsl(var(--gold) / 0.85)" }}>
+        <span className="block truncate text-[10.5px] font-medium tracking-wide" style={{ color: "hsl(var(--gold) / 0.85)" }}>
           {t("app.subtitle")}
         </span>
       </span>

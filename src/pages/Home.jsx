@@ -23,7 +23,7 @@ export default function Home() {
       <section className="relative overflow-hidden">
         <div className="container grid items-center gap-10 py-14 md:grid-cols-2 md:py-20">
           <div className="animate-fade-in">
-            <span className="inline-flex items-center gap-2 rounded-md bg-primary/10 px-3 py-1 text-sm font-semibold text-primary">
+            <span className="inline-flex items-center gap-2 rounded-md bg-primary/10 px-3 py-1 text-sm font-semibold text-goldink">
               <Sparkles className="h-4 w-4" />
               {t("home.hero.kicker")}
             </span>
@@ -48,7 +48,7 @@ export default function Home() {
           </div>
 
           {/* Nameplate — honours the original site's identity: the doctor's name
-              in a classic Hebrew serif, gold on charcoal, with a traditional
+              in a clean Hebrew sans, gold on charcoal, with a traditional
               double-rule frame. No generic diamond. */}
           <div className="relative animate-fade-in">
             <div className="card-soft overflow-hidden">
@@ -84,7 +84,7 @@ export default function Home() {
       <section className="container grid gap-4 py-6 md:grid-cols-3">
         {features.map((f) => (
           <Card key={f.title} className="p-6">
-            <span className="grid h-11 w-11 place-items-center rounded-md bg-secondary text-primary">
+            <span className="grid h-11 w-11 place-items-center rounded-md bg-secondary text-goldink">
               <f.icon className="h-5 w-5" />
             </span>
             <h3 className="mt-4 font-bold">{f.title}</h3>

@@ -63,11 +63,11 @@ export default function Certificate() {
         <div className="brand-mark mx-auto mb-6 h-16 w-16 rounded-full text-3xl" aria-hidden>
           ג
         </div>
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
+        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-goldink">
           {t("app.title")}
         </p>
         <h1 className="mt-3 flex items-center justify-center gap-2 text-2xl font-extrabold md:text-3xl">
-          <Award className="h-7 w-7 text-amber-500" />
+          <Award className="h-7 w-7 text-goldink" />
           {t("cert.title")}
         </h1>
 

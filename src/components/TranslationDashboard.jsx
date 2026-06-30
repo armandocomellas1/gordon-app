@@ -229,7 +229,7 @@ export default function TranslationDashboard() {
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <p className="flex items-center gap-1.5 text-sm font-bold">
-                <Server className="h-4 w-4 text-primary" />
+                <Server className="h-4 w-4 text-goldink" />
                 {t("pipe.sim.title")}
               </p>
               <p className="mt-0.5 text-xs text-muted-foreground">{t("pipe.sim.note")}</p>
@@ -272,7 +272,7 @@ export default function TranslationDashboard() {
         </Card>
       ) : (
         <Card className="flex items-center gap-2 p-4 text-sm text-muted-foreground">
-          <Server className="h-4 w-4 shrink-0 text-primary" />
+          <Server className="h-4 w-4 shrink-0 text-goldink" />
           {t("pipe.live.note")}
         </Card>
       )}

@@ -46,7 +46,7 @@ export default function KitSection({ user, hasAccess }) {
     return (
       <Card className="p-6">
         <h2 className="flex items-center gap-2 font-bold">
-          <Package className="h-5 w-5 text-primary" />
+          <Package className="h-5 w-5 text-goldink" />
           {t("kit.title")}
         </h2>
         <p className="mt-3 flex items-center gap-1.5 text-sm text-muted-foreground">
@@ -61,7 +61,7 @@ export default function KitSection({ user, hasAccess }) {
     <Card className="p-6">
       <div className="flex items-center justify-between">
         <h2 className="flex items-center gap-2 font-bold">
-          <Package className="h-5 w-5 text-primary" />
+          <Package className="h-5 w-5 text-goldink" />
           {t("kit.title")}
         </h2>
         {shipment && <Badge tone={STATUS_TONE[shipment.status]}>{t(`kit.status.${shipment.status}`)}</Badge>}
@@ -90,7 +90,7 @@ export default function KitSection({ user, hasAccess }) {
           </p>
           {shipment.tracking && (
             <p className="mt-2 inline-flex items-center gap-1.5">
-              <Truck className="h-4 w-4 text-primary" />
+              <Truck className="h-4 w-4 text-goldink" />
               {t("kit.tracking")}: <span className="font-semibold">{shipment.tracking}</span>
               {shipment.carrier ? ` (${shipment.carrier})` : ""}
             </p>

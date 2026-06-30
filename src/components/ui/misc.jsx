@@ -7,7 +7,7 @@ export function Skeleton({ className }) {
 export function Spinner({ className }) {
   return (
     <svg
-      className={cn("animate-spin h-5 w-5 text-primary", className)}
+      className={cn("animate-spin h-5 w-5 text-goldink", className)}
       viewBox="0 0 24 24"
       fill="none"
     >

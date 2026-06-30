@@ -36,7 +36,7 @@ function MaterialsAdmin() {
   return (
     <Card className="p-5">
       <h3 className="flex items-center gap-2 font-bold">
-        <FileText className="h-4 w-4 text-primary" />
+        <FileText className="h-4 w-4 text-goldink" />
         {t("admin.course.materials")}
       </h3>
       <div className="mt-3 divide-y divide-border">
@@ -98,7 +98,7 @@ function ShipmentsAdmin() {
   return (
     <Card className="p-5">
       <h3 className="flex items-center gap-2 font-bold">
-        <Package className="h-4 w-4 text-primary" />
+        <Package className="h-4 w-4 text-goldink" />
         {t("admin.course.shipments")}
       </h3>
       {rows.length === 0 ? (
@@ -183,7 +183,7 @@ function MeetingsAdmin() {
   return (
     <Card className="p-5">
       <h3 className="flex items-center gap-2 font-bold">
-        <CalendarDays className="h-4 w-4 text-primary" />
+        <CalendarDays className="h-4 w-4 text-goldink" />
         {t("admin.course.meetings")}
       </h3>
       {rows.length === 0 ? (

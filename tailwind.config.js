@@ -13,6 +13,7 @@ export default {
         // Charcoal/black + antique-gold palette via CSS variables (light + dark),
         // following doctorgavrielov.co.il. Token values live in src/index.css.
         gold: "hsl(var(--gold))",
+        goldink: "hsl(var(--gold-ink))",
         ink: "hsl(var(--ink))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

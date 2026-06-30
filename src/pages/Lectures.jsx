@@ -64,7 +64,7 @@ export default function Lectures() {
       <header className="mb-8 grid gap-5 md:grid-cols-3 md:items-stretch">
         <div className="md:col-span-2">
           <h1 className="text-3xl font-extrabold">{t("lectures.title")}</h1>
-          <p className="mt-1 text-sm font-semibold text-primary">{t("lectures.subtitle")}</p>
+          <p className="mt-1 text-sm font-semibold text-goldink">{t("lectures.subtitle")}</p>
           <p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground">{t("lectures.intro")}</p>
           {firstPreview && (
             <Button asChild className="mt-4">

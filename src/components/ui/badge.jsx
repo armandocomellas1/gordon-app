@@ -2,8 +2,8 @@ import { cn } from "@/lib/utils";
 
 const tones = {
   default: "bg-secondary text-secondary-foreground",
-  primary: "bg-primary/10 text-primary",
-  accent: "bg-accent/15 text-amber-700",
+  primary: "bg-primary/10 text-goldink",
+  accent: "bg-amber-100 text-amber-800",
   success: "bg-emerald-100 text-emerald-700",
   warning: "bg-amber-100 text-amber-700",
   danger: "bg-red-100 text-red-700",

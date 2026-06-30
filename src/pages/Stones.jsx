@@ -50,7 +50,7 @@ export default function Stones() {
     <div className="container-page">
       <header className="mb-6">
         <h1 className="flex items-center gap-2 text-3xl font-extrabold">
-          <Gem className="h-7 w-7 text-primary" />
+          <Gem className="h-7 w-7 text-goldink" />
           {t("stones.title")}
         </h1>
         <p className="mt-1 max-w-2xl text-muted-foreground">{t("stones.subtitle")}</p>
