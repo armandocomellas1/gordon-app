@@ -1,5 +1,5 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Gem, LogOut, ShieldCheck, Menu, X } from "lucide-react";
+import { LogOut, ShieldCheck, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useI18n } from "@/i18n";
 import { useAuth } from "@/hooks/useAuth";
@@ -21,6 +21,28 @@ function navItems(t, isAdmin) {
   return items;
 }
 
+/* The brand identity is the NAME, not an icon — a gold serif monogram on
+   charcoal (ג, the initial of גבריאלוב) keeps the Hebrew-first feel of the
+   original site without a generic diamond. */
+function Brand() {
+  const { t } = useI18n();
+  return (
+    <Link to="/" className="flex items-center gap-3">
+      <span className="brand-mark h-10 w-10 text-lg" aria-hidden>
+        ג
+      </span>
+      <span className="leading-tight">
+        <span className="block text-base font-extrabold tracking-wide" style={{ color: "hsl(var(--on-ink))" }}>
+          {t("app.title")}
+        </span>
+        <span className="block text-[10.5px] font-medium tracking-wide" style={{ color: "hsl(var(--gold) / 0.85)" }}>
+          {t("app.subtitle")}
+        </span>
+      </span>
+    </Link>
+  );
+}
+
 export default function Layout({ children }) {
   const { t } = useI18n();
   const { user, isAdmin, logout } = useAuth();
@@ -31,17 +53,12 @@ export default function Layout({ children }) {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur">
+      {/* Header — always the dark charcoal + gold bar of doctorgavrielov.co.il.
+          The `dark` class scopes child controls (toggles, buttons) to dark tokens. */}
+      <header className="dark site-chrome sticky top-0 z-40 border-b">
+        <div className="gold-rule" />
         <div className="container flex h-16 items-center justify-between gap-3">
-          <Link to="/" className="flex items-center gap-2.5">
-            <span className="grid h-9 w-9 place-items-center rounded-lg bg-gradient-to-br from-primary to-purple-700 text-white">
-              <Gem className="h-5 w-5" />
-            </span>
-            <span className="leading-none">
-              <span className="block text-sm font-extrabold">{t("app.title")}</span>
-              <span className="block text-[11px] text-muted-foreground">{t("app.subtitle")}</span>
-            </span>
-          </Link>
+          <Brand />
 
           <nav className="hidden items-center gap-1 md:flex">
             {items.map((it) => (
@@ -50,11 +67,7 @@ export default function Layout({ children }) {
                 to={it.to}
                 end={it.end}
                 className={({ isActive }) =>
-                  cn(
-                    "rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                    isActive ? "bg-secondary text-foreground" : "text-muted-foreground hover:text-foreground",
-                    it.admin && "text-primary"
-                  )
+                  cn("nav-link", isActive && "is-active", it.admin && "text-gold")
                 }
               >
                 <span className="inline-flex items-center gap-1.5">
@@ -80,6 +93,7 @@ export default function Layout({ children }) {
             )}
             <button
               className="grid h-10 w-10 place-items-center rounded-md md:hidden"
+              style={{ color: "hsl(var(--on-ink))" }}
               onClick={() => setOpen((v) => !v)}
               aria-label="Menu"
             >
@@ -89,7 +103,7 @@ export default function Layout({ children }) {
         </div>
 
         {open && (
-          <div className="border-t border-border bg-background md:hidden">
+          <div className="border-t bg-ink md:hidden">
             <div className="container flex flex-col gap-1 py-3">
               {items.map((it) => (
                 <NavLink
@@ -98,10 +112,7 @@ export default function Layout({ children }) {
                   end={it.end}
                   onClick={() => setOpen(false)}
                   className={({ isActive }) =>
-                    cn(
-                      "rounded-md px-3 py-2 text-sm font-medium",
-                      isActive ? "bg-secondary" : "text-muted-foreground"
-                    )
+                    cn("nav-link", isActive && "is-active", it.admin && "text-gold")
                   }
                 >
                   {it.label}
@@ -131,20 +142,26 @@ export default function Layout({ children }) {
         {children}
       </main>
 
-      <footer className="border-t border-border/70 py-8">
-        <div className="container flex flex-col items-center gap-5">
+      <footer className="dark site-chrome border-t">
+        <div className="gold-rule" />
+        <div className="container flex flex-col items-center gap-5 py-8">
           <SocialLinks withLabel />
-          <div className="flex w-full flex-col items-center justify-between gap-3 text-sm text-muted-foreground md:flex-row">
+          <div className="flex w-full flex-col items-center justify-between gap-3 text-sm md:flex-row" style={{ color: "hsl(var(--on-ink) / 0.7)" }}>
             <span>
               © {new Date().getFullYear()} {t("app.title")} · {t("footer.rights")}
             </span>
             <div className="flex items-center gap-3">
               {IS_DEMO && (
-                <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-semibold text-amber-700">
+                <span className="rounded-full px-2.5 py-0.5 text-xs font-semibold" style={{ background: "hsl(var(--gold) / 0.15)", color: "hsl(var(--gold))" }}>
                   {t("footer.demo")}
                 </span>
               )}
-              <a href="https://www.doctorgavrielov.co.il" target="_blank" rel="noreferrer" className="hover:text-foreground">
+              <a
+                href="https://www.doctorgavrielov.co.il"
+                target="_blank"
+                rel="noreferrer"
+                className="transition-colors hover:text-gold"
+              >
                 doctorgavrielov.co.il
               </a>
             </div>

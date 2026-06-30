@@ -21,7 +21,7 @@ export const strings = {
     "lang.switch": "Switch to English",
 
     "home.hero.kicker": "Cours en ligne · 23 conférences",
-    "home.hero.title": "Le pont entre les Écritures, la gémologie et la guérison par les pierres",
+    "home.hero.title": "Le Pont entre les Écritures, la Gémologie et la Guérison par les Cristaux",
     "home.hero.body":
       "Un cours complet par le Dr. Gavrielov — gémologue certifiée GIA et docteure en gémologie & comportement humain — reliant les pierres précieuses des Écritures hébraïques à la littérature moderne de la guérison par les cristaux.",
     "home.cta.browse": "Voir les conférences",
@@ -283,7 +283,7 @@ export const strings = {
     "lang.switch": "מעבר לעברית",
 
     "home.hero.kicker": "Online course · 23 lectures",
-    "home.hero.title": "The bridge between Scripture, gemology and stone healing",
+    "home.hero.title": "The Bridge Between Scripture, Gemology and Crystal Healing",
     "home.hero.body":
       "A comprehensive lecture course by Dr. Gavrielov — GIA-trained gemologist and PhD in gemology & human behaviour — connecting the gemstones of the Hebrew Scriptures with the modern body of crystal-healing literature.",
     "home.cta.browse": "Browse lectures",
@@ -545,7 +545,7 @@ export const strings = {
     "lang.switch": "Switch to English",
 
     "home.hero.kicker": "Онлайн-курс · 23 лекций",
-    "home.hero.title": "Мост между Писанием, геммологией и исцелением камнями",
+    "home.hero.title": "Мост между Писанием, геммологией и кристаллотерапией",
     "home.hero.body":
       "Подробный курс лекций от д-ра Гавриэлов — сертифицированного геммолога GIA и доктора наук в области геммологии и поведения человека — объединяющий драгоценные камни Священного Писания с современной литературой по кристаллотерапии.",
     "home.cta.browse": "Смотреть лекции",
@@ -807,7 +807,7 @@ export const strings = {
     "lang.switch": "Switch to English",
 
     "home.hero.kicker": "קורס מקוון · 23 הרצאות",
-    "home.hero.title": "הגשר בין הכתובים, הגמולוגיה והריפוי באבנים",
+    "home.hero.title": "הגשר בין הכתובים, הגמולוגיה והריפוי באבני חן",
     "home.hero.body":
       "קורס הרצאות מקיף מאת ד״ר גבריאלוב, בעלת תואר בגמולוגיה (GIA) ודוקטורט בגמולוגיה והתנהגות אנושית — המחבר בין אבני החן שבכתבי הקודש לבין ספרות הריפוי המודרנית.",
     "home.cta.browse": "לצפייה בהרצאות",

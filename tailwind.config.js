@@ -10,8 +10,10 @@ export default {
     },
     extend: {
       colors: {
-        // Amethyst / crystal-healing palette via CSS variables (light + dark).
-        // Token values live in src/index.css (:root and .dark).
+        // Charcoal/black + antique-gold palette via CSS variables (light + dark),
+        // following doctorgavrielov.co.il. Token values live in src/index.css.
+        gold: "hsl(var(--gold))",
+        ink: "hsl(var(--ink))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -43,13 +45,16 @@ export default {
         },
       },
       borderRadius: {
-        lg: "0.9rem",
-        md: "0.65rem",
-        sm: "0.4rem",
+        // Crisper, more classic corners — less "pill-shaped SaaS".
+        lg: "0.5rem",
+        md: "0.375rem",
+        sm: "0.25rem",
       },
       fontFamily: {
-        // Heebo carries Hebrew + Latin gracefully; falls back to system.
-        sans: ["Heebo", "Assistant", "system-ui", "Segoe UI", "Arial", "sans-serif"],
+        // doctorgavrielov.co.il uses a clean Hebrew-first sans (Arial). Heebo
+        // carries Hebrew + Latin gracefully and matches that utilitarian feel;
+        // emphasis comes from weight + gold, not from a serif.
+        sans: ["Heebo", "Assistant", "Arial", "system-ui", "Segoe UI", "sans-serif"],
       },
       keyframes: {
         "fade-in": {

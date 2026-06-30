@@ -1,4 +1,4 @@
-import { GraduationCap, Gem } from "lucide-react";
+import { GraduationCap } from "lucide-react";
 import { useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
 
@@ -13,8 +13,8 @@ export default function InstructorCard({ compact = false, className }) {
         className
       )}
     >
-      <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-gradient-to-br from-primary to-purple-700 text-white">
-        <Gem className="h-7 w-7" />
+      <span className="brand-mark h-14 w-14 shrink-0 rounded-full text-2xl" aria-hidden>
+        ג
       </span>
       <div className="min-w-0">
         <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">

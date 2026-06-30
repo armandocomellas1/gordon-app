@@ -87,7 +87,7 @@ export default function Stones() {
               onClick={() => setActive(s)}
               className="card-soft group overflow-hidden text-start transition-transform hover:-translate-y-0.5"
             >
-              <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-purple-200 to-amber-100">
+              <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-secondary to-primary/15">
                 {s.image_url && (
                   <img
                     src={s.image_url}
@@ -115,7 +115,7 @@ export default function Stones() {
       <Dialog open={!!active} onClose={() => setActive(null)}>
         {active && (
           <div>
-            <div className="relative aspect-video overflow-hidden rounded-t-lg bg-gradient-to-br from-purple-200 to-amber-100">
+            <div className="relative aspect-video overflow-hidden rounded-t-lg bg-gradient-to-br from-secondary to-primary/15">
               {active.image_url && (
                 <img src={active.image_url} alt="" className="h-full w-full object-cover" onError={(e) => (e.currentTarget.style.display = "none")} />
               )}

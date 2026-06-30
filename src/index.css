@@ -3,50 +3,65 @@
 @tailwind utilities;
 
 @layer base {
+  /* Visual identity follows doctorgavrielov.co.il (verified from the live site's
+     heb.css + toolbar config): a WHITE canvas, a #3c3c3c charcoal navigation bar,
+     and a warm GOLD accent (#d9b91a, darker active #cca300). Clean Hebrew-first
+     sans-serif — NO serif, NO purple. Gold + weight carry the emphasis. */
   :root {
-    --background: 280 40% 99%;
-    --foreground: 266 35% 14%;
-    --card: 0 0% 100%;
-    --card-foreground: 266 35% 14%;
-    --primary: 266 60% 48%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 280 45% 95%;
-    --secondary-foreground: 266 35% 20%;
-    --muted: 280 30% 95%;
-    --muted-foreground: 266 12% 42%;
-    --accent: 36 92% 55%;
-    --accent-foreground: 266 35% 14%;
-    --destructive: 0 72% 51%;
+    --background: 40 15% 98%; /* essentially white, a hair of warmth */
+    --foreground: 30 6% 22%; /* #3a3633 — near-black charcoal ink */
+    --card: 0 0% 100%; /* pure white tiles */
+    --card-foreground: 30 6% 22%;
+    --primary: 51 78% 47%; /* #d9b91a — brand gold */
+    --primary-foreground: 30 14% 13%; /* dark ink on gold */
+    --secondary: 40 14% 92%; /* warm light stone */
+    --secondary-foreground: 30 6% 24%;
+    --muted: 40 12% 93%;
+    --muted-foreground: 30 5% 38%; /* ~#575757 body gray */
+    --accent: 48 88% 38%; /* #cca300 — darker active gold */
+    --accent-foreground: 30 14% 13%;
+    --destructive: 0 64% 46%;
     --destructive-foreground: 0 0% 100%;
-    --border: 266 30% 88%;
-    --input: 266 30% 88%;
-    --ring: 266 60% 55%;
-    --shadow-soft: 0 10px 30px -12px hsl(266 50% 30% / 0.18);
-    --glow-1: 266 60% 95%;
-    --glow-2: 36 80% 94%;
+    --border: 40 12% 86%;
+    --input: 40 12% 86%;
+    --ring: 51 78% 47%;
+    --shadow-soft: 0 12px 30px -16px hsl(30 20% 14% / 0.18);
+    /* Site chrome — the dark #3c3c3c bar, kept identical in light & dark so the
+       navigation always reads as the original site's charcoal + gold. */
+    --ink: 28 5% 22%; /* ~#3c3c3c charcoal */
+    --ink-2: 28 5% 28%;
+    --on-ink: 0 0% 100%; /* white menu text */
+    --gold: 51 80% 52%; /* brand gold tuned for legibility on charcoal */
+    /* Barely-there warm paper wash (replaces the old purple glow). */
+    --glow-1: 45 35% 96%;
+    --glow-2: 40 30% 96%;
   }
 
   .dark {
-    --background: 266 30% 8%;
-    --foreground: 280 20% 92%;
-    --card: 266 28% 12%;
-    --card-foreground: 280 20% 92%;
-    --primary: 266 72% 67%;
-    --primary-foreground: 266 45% 10%;
-    --secondary: 266 24% 18%;
-    --secondary-foreground: 280 20% 90%;
-    --muted: 266 20% 18%;
-    --muted-foreground: 266 14% 64%;
-    --accent: 36 90% 60%;
-    --accent-foreground: 266 45% 10%;
-    --destructive: 0 70% 58%;
+    --background: 30 6% 10%; /* near-black warm charcoal */
+    --foreground: 40 18% 90%;
+    --card: 30 6% 13%;
+    --card-foreground: 40 18% 90%;
+    --primary: 49 76% 55%; /* gold reads as the action color on dark */
+    --primary-foreground: 30 18% 10%;
+    --secondary: 30 5% 18%;
+    --secondary-foreground: 40 14% 86%;
+    --muted: 30 5% 18%;
+    --muted-foreground: 40 8% 62%;
+    --accent: 49 70% 50%;
+    --accent-foreground: 30 18% 10%;
+    --destructive: 0 64% 56%;
     --destructive-foreground: 0 0% 100%;
-    --border: 266 18% 26%;
-    --input: 266 18% 26%;
-    --ring: 266 70% 62%;
-    --shadow-soft: 0 14px 34px -14px hsl(266 80% 3% / 0.65);
-    --glow-1: 266 50% 20%;
-    --glow-2: 280 40% 15%;
+    --border: 30 5% 24%;
+    --input: 30 5% 24%;
+    --ring: 49 76% 55%;
+    --shadow-soft: 0 16px 36px -16px hsl(0 0% 0% / 0.7);
+    --ink: 28 5% 22%; /* keep the charcoal bar consistent across themes */
+    --ink-2: 28 5% 28%;
+    --on-ink: 0 0% 100%;
+    --gold: 49 78% 58%;
+    --glow-1: 40 30% 13%;
+    --glow-2: 28 14% 11%;
   }
 
   * {
@@ -59,8 +74,8 @@
     @apply bg-background text-foreground antialiased;
     min-height: 100vh;
     background-image:
-      radial-gradient(60rem 60rem at 100% -10%, hsl(var(--glow-1)) 0%, transparent 55%),
-      radial-gradient(50rem 50rem at -10% 0%, hsl(var(--glow-2)) 0%, transparent 45%);
+      radial-gradient(58rem 58rem at 100% -10%, hsl(var(--glow-1)) 0%, transparent 60%),
+      radial-gradient(48rem 48rem at -10% 0%, hsl(var(--glow-2)) 0%, transparent 50%);
     background-attachment: fixed;
     color-scheme: light dark;
   }
@@ -74,6 +89,49 @@
     @apply rounded-lg border bg-card text-card-foreground;
     box-shadow: var(--shadow-soft);
   }
+
+  /* Site chrome — header and footer stay the dark charcoal + gold bar of
+     doctorgavrielov.co.il in both themes. The `dark` class on these elements
+     scopes child controls (toggles, switches, buttons) to dark tokens so they
+     stay legible on the charcoal background. */
+  .site-chrome {
+    background-color: hsl(var(--ink));
+    color: hsl(var(--on-ink));
+    border-color: hsl(var(--gold) / 0.22);
+  }
+  .nav-link {
+    @apply rounded-md px-3 py-2 text-sm font-medium transition-colors;
+    color: hsl(var(--on-ink) / 0.88);
+  }
+  .nav-link:hover {
+    color: hsl(var(--gold));
+  }
+  .nav-link[aria-current="page"],
+  .nav-link.is-active {
+    color: hsl(var(--gold));
+    background-color: hsl(var(--gold) / 0.12);
+  }
+
+  /* Gold-on-charcoal monogram mark — the brand identity is the NAME, not an icon
+     (ג, the initial of גבריאלוב). Keeps the Hebrew-first feel without a diamond. */
+  .brand-mark {
+    @apply grid place-items-center rounded-md font-bold leading-none;
+    background-color: hsl(var(--ink-2));
+    color: hsl(var(--gold));
+    box-shadow: inset 0 0 0 1px hsl(var(--gold) / 0.55);
+  }
+
+  /* Thin gold rule, echoing the decorative dividers on the original site. */
+  .gold-rule {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--gold) / 0.6),
+      transparent
+    );
+  }
+
   .shimmer {
     @apply relative overflow-hidden bg-muted;
   }
@@ -109,7 +167,7 @@
   }
   .cert-sheet {
     box-shadow: none !important;
-    border: 2px solid hsl(266 60% 48%) !important;
+    border: 2px solid hsl(51 78% 47%) !important;
     max-width: 100% !important;
   }
 }
@@ -120,7 +178,7 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   background: #000;
-  border-radius: 0.9rem;
+  border-radius: 0.5rem;
   overflow: hidden;
 }
 .aspect-video-frame > iframe,

@@ -22,7 +22,7 @@ export default function LectureCard({ lecture, locked, progress }) {
       to={`/lectures/${lecture.id}`}
       className="group card-soft block overflow-hidden transition-transform hover:-translate-y-0.5"
     >
-      <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-purple-200 to-amber-100">
+      <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-secondary to-primary/15">
         {lecture.thumbnail_url && (
           <img
             src={lecture.thumbnail_url}

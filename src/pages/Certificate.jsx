@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Printer, Gem, Award } from "lucide-react";
+import { ArrowLeft, ArrowRight, Printer, Award } from "lucide-react";
 import { useI18n } from "@/i18n";
 import { useAuth } from "@/hooks/useAuth";
 import { Lecture, Progress } from "@/api/entities";
@@ -60,8 +60,8 @@ export default function Certificate() {
 
       {/* The printable sheet */}
       <div className="cert-sheet card-soft mx-auto bg-white p-10 text-center md:p-14">
-        <div className="mx-auto mb-6 grid h-16 w-16 place-items-center rounded-full bg-gradient-to-br from-primary to-purple-700 text-white">
-          <Gem className="h-8 w-8" />
+        <div className="brand-mark mx-auto mb-6 h-16 w-16 rounded-full text-3xl" aria-hidden>
+          ג
         </div>
         <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
           {t("app.title")}

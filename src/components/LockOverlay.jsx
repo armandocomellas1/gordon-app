@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 export default function LockOverlay({ reason }) {
   const { t } = useI18n();
   return (
-    <div className="absolute inset-0 z-10 grid place-items-center bg-gradient-to-b from-purple-950/80 to-black/90 text-center text-white">
+    <div className="absolute inset-0 z-10 grid place-items-center bg-gradient-to-b from-black/80 to-black/95 text-center text-white">
       <div className="max-w-sm px-6">
         <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-full bg-white/10">
           <Lock className="h-7 w-7" />
