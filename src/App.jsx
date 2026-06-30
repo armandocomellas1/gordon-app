@@ -8,6 +8,9 @@ import Home from "@/pages/Home";
 import Lectures from "@/pages/Lectures";
 import LectureDetail from "@/pages/LectureDetail";
 import Stones from "@/pages/Stones";
+import About from "@/pages/About";
+import Contact from "@/pages/Contact";
+import CompanyPolicy from "@/pages/CompanyPolicy";
 import Login from "@/pages/Login";
 import MyAccount from "@/pages/MyAccount";
 import Certificate from "@/pages/Certificate";
@@ -26,6 +29,9 @@ export default function App() {
               <Route path="/lectures" element={<Lectures />} />
               <Route path="/lectures/:id" element={<LectureDetail />} />
               <Route path="/stones" element={<Stones />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/company-policy" element={<CompanyPolicy />} />
               <Route path="/login" element={<Login />} />
               <Route
                 path="/certificate"

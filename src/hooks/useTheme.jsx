@@ -4,13 +4,12 @@ const ThemeContext = createContext(null);
 const KEY = "gavrielov.theme";
 
 function initialTheme() {
-  if (typeof window === "undefined") return "light";
+  if (typeof window === "undefined") return "dark";
   const saved = localStorage.getItem(KEY);
   if (saved === "light" || saved === "dark") return saved;
-  // Respect the OS preference on first visit.
-  return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
+  // Default to the gray/charcoal "Gavrielov" theme that mirrors
+  // doctorgavrielov.co.il; users can still switch to the light alternative.
+  return "dark";
 }
 
 export function ThemeProvider({ children }) {

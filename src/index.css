@@ -3,22 +3,23 @@
 @tailwind utilities;
 
 @layer base {
-  /* Visual identity follows doctorgavrielov.co.il (verified from the live site's
-     heb.css + toolbar config): a WHITE canvas, a #3c3c3c charcoal navigation bar,
-     and a warm GOLD accent (#d9b91a, darker active #cca300). Clean Hebrew-first
-     sans-serif — NO serif, NO purple. Gold + weight carry the emphasis. */
+  /* Visual identity follows english.doctorgavrielov.co.il: a GRAY/charcoal canvas
+     with a dark navigation bar, warm GOLD accents (#d9b91a, deep #cca300) and white
+     text. The default (.dark) theme is the gray look from the live site; :root is a
+     clean light alternative. Hebrew-first sans for body/nav; serif only for the gold
+     banner title. No purple. */
   :root {
-    --background: 40 15% 98%; /* essentially white, a hair of warmth */
-    --foreground: 30 6% 22%; /* #3a3633 — near-black charcoal ink */
-    --card: 0 0% 100%; /* pure white tiles */
+    --background: 40 15% 98%;
+    --foreground: 30 6% 22%;
+    --card: 0 0% 100%;
     --card-foreground: 30 6% 22%;
-    --primary: 51 78% 47%; /* #d9b91a — brand gold */
-    --primary-foreground: 30 14% 13%; /* dark ink on gold */
-    --secondary: 40 14% 92%; /* warm light stone */
+    --primary: 51 78% 47%;
+    --primary-foreground: 30 14% 13%;
+    --secondary: 40 14% 92%;
     --secondary-foreground: 30 6% 24%;
     --muted: 40 12% 93%;
-    --muted-foreground: 30 5% 38%; /* ~#575757 body gray */
-    --accent: 49 88% 40%; /* ~#cca300 — darker active gold */
+    --muted-foreground: 30 5% 38%;
+    --accent: 49 88% 40%;
     --accent-foreground: 30 14% 13%;
     --destructive: 0 64% 46%;
     --destructive-foreground: 0 0% 100%;
@@ -26,46 +27,43 @@
     --input: 40 12% 86%;
     --ring: 51 78% 47%;
     --shadow-soft: 0 12px 30px -16px hsl(30 20% 14% / 0.18);
-    /* Site chrome — the dark #3c3c3c bar, kept identical in light & dark so the
-       navigation always reads as the original site's charcoal + gold. */
-    --ink: 28 5% 22%; /* ~#3c3c3c charcoal */
-    --ink-2: 28 5% 28%;
-    --on-ink: 0 0% 100%; /* white menu text */
-    --gold: 51 80% 52%; /* brand gold tuned for legibility on charcoal */
-    /* Deep "antique" gold for gold TEXT/ICONS on light surfaces — bright gold
-       (#d9b91a) is brand-correct as a fill but unreadable as text on white. */
+    --ink: 28 5% 18%;
+    --ink-2: 28 5% 24%;
+    --on-ink: 0 0% 100%;
+    --gold: 51 80% 52%;
     --gold-ink: 46 86% 30%;
-    /* Barely-there warm paper wash (replaces the old purple glow). */
     --glow-1: 45 35% 96%;
     --glow-2: 40 30% 96%;
   }
 
+  /* Default app look — the GRAY/charcoal + gold + white identity of
+     english.doctorgavrielov.co.il (default theme; see useTheme). */
   .dark {
-    --background: 30 6% 10%; /* near-black warm charcoal */
-    --foreground: 40 18% 90%;
-    --card: 30 6% 13%;
-    --card-foreground: 40 18% 90%;
-    --primary: 49 76% 55%; /* gold reads as the action color on dark */
-    --primary-foreground: 30 18% 10%;
-    --secondary: 30 5% 18%;
-    --secondary-foreground: 40 14% 86%;
-    --muted: 30 5% 18%;
-    --muted-foreground: 40 8% 62%;
-    --accent: 49 70% 50%;
-    --accent-foreground: 30 18% 10%;
-    --destructive: 0 64% 56%;
+    --background: 30 4% 29%; /* warm medium-gray canvas, like the live site */
+    --foreground: 40 18% 95%; /* near-white text */
+    --card: 30 5% 22%; /* darker tile, like the site's product boxes */
+    --card-foreground: 40 18% 95%;
+    --primary: 49 80% 56%; /* bright brand gold — fills/buttons */
+    --primary-foreground: 30 25% 10%;
+    --secondary: 30 4% 38%; /* lighter gray surface */
+    --secondary-foreground: 40 16% 94%;
+    --muted: 30 4% 36%;
+    --muted-foreground: 40 12% 80%;
+    --accent: 49 85% 52%;
+    --accent-foreground: 30 25% 10%;
+    --destructive: 0 64% 58%;
     --destructive-foreground: 0 0% 100%;
-    --border: 30 5% 24%;
-    --input: 30 5% 24%;
-    --ring: 49 76% 55%;
-    --shadow-soft: 0 16px 36px -16px hsl(0 0% 0% / 0.7);
-    --ink: 28 5% 22%; /* keep the charcoal bar consistent across themes */
-    --ink-2: 28 5% 28%;
+    --border: 30 4% 46%;
+    --input: 30 4% 46%;
+    --ring: 49 80% 56%;
+    --shadow-soft: 0 16px 36px -18px hsl(0 0% 0% / 0.55);
+    --ink: 28 6% 15%; /* deep charcoal bar — header/footer/banner */
+    --ink-2: 28 6% 21%;
     --on-ink: 0 0% 100%;
-    --gold: 49 78% 58%;
-    --gold-ink: 49 76% 60%; /* on dark surfaces, gold text can stay bright */
-    --glow-1: 40 30% 13%;
-    --glow-2: 28 14% 11%;
+    --gold: 49 84% 62%;
+    --gold-ink: 49 82% 64%; /* gold text stays bright on gray/dark */
+    --glow-1: 44 22% 24%;
+    --glow-2: 28 10% 22%;
   }
 
   * {
@@ -94,18 +92,17 @@
     box-shadow: var(--shadow-soft);
   }
 
-  /* Site chrome — header and footer stay the dark charcoal + gold bar of
-     doctorgavrielov.co.il in both themes. The `dark` class on these elements
-     scopes child controls (toggles, switches, buttons) to dark tokens so they
-     stay legible on the charcoal background. */
+  /* Site chrome — header/footer/nav stay the dark charcoal + gold bar of the
+     original site. The `dark` class on these elements scopes child controls to
+     dark tokens so they stay legible on the charcoal. */
   .site-chrome {
     background-color: hsl(var(--ink));
     color: hsl(var(--on-ink));
     border-color: hsl(var(--gold) / 0.22);
   }
   .nav-link {
-    @apply rounded-md px-3 py-2 text-sm font-medium transition-colors;
-    color: hsl(var(--on-ink) / 0.88);
+    @apply rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors;
+    color: hsl(var(--on-ink) / 0.9);
   }
   .nav-link:hover {
     color: hsl(var(--gold));
@@ -115,9 +112,14 @@
     color: hsl(var(--gold));
     background-color: hsl(var(--gold) / 0.12);
   }
+  /* Inert menu items (no page yet) — visible but clearly non-interactive. */
+  .nav-soon {
+    @apply rounded-md px-2.5 py-1.5 text-sm font-medium cursor-default;
+    color: hsl(var(--on-ink) / 0.45);
+  }
 
-  /* Gold-on-charcoal monogram mark — the brand identity is the NAME, not an icon
-     (ג, the initial of גבריאלוב). Keeps the Hebrew-first feel without a diamond. */
+  /* Gold-on-charcoal monogram mark — the brand identity is the NAME (ג, the
+     initial of גבריאלוב), never a generic diamond. */
   .brand-mark {
     @apply grid place-items-center rounded-md font-bold leading-none;
     background-color: hsl(var(--ink-2));
@@ -134,6 +136,21 @@
       hsl(var(--gold) / 0.6),
       transparent
     );
+  }
+
+  /* The banner strip — gray-to-charcoal gradient holding the gold name + photo,
+     mirroring the header of english.doctorgavrielov.co.il. */
+  .site-banner {
+    background: linear-gradient(180deg, hsl(var(--ink-2)) 0%, hsl(var(--ink)) 100%);
+    color: hsl(var(--on-ink));
+  }
+  /* The signature gold, outlined serif title from the original site. */
+  .banner-title {
+    @apply font-display font-bold leading-tight;
+    color: #e9c860;
+    -webkit-text-stroke: 1px rgba(38, 28, 6, 0.55);
+    paint-order: stroke fill;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   .shimmer {
@@ -160,8 +177,7 @@
 }
 
 /* The certificate is always a white sheet (on screen and in print), so force
-   light-theme ink + deep gold inside it regardless of the app theme — otherwise
-   dark-mode tokens render light text/bright gold on white and become unreadable. */
+   light-theme ink + deep gold inside it regardless of the app theme. */
 .cert-sheet {
   --foreground: 30 6% 22%;
   --card-foreground: 30 6% 22%;

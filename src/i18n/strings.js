@@ -1,6 +1,8 @@
 // UI string table. Lecture content (titles/descriptions) is bilingual in the
 // data itself; this table is for chrome/labels only.
 
+import { pages } from "./pages";
+
 export const LANGS = {
   fr: { code: "fr", dir: "ltr", label: "FR", flag: "🇫🇷" },
   en: { code: "en", dir: "ltr", label: "EN", flag: "🇬🇧" },
@@ -1057,3 +1059,9 @@ export const strings = {
     "share.copied": "הקישור הועתק!",
   },
 };
+
+// Merge page-level strings (nav menu, banner, About, Contact, Company Policy)
+// into each language so t() resolves them like any other key.
+for (const l of Object.keys(strings)) {
+  Object.assign(strings[l], pages[l] || {});
+}

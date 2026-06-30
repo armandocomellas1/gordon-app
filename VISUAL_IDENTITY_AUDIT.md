@@ -113,6 +113,30 @@ light theme. Fixed systemically:
   they read on their white disc in dark mode too.
 - Retuned `--accent` to a truer `#cca300`.
 
+## Round 2 — aligning to english.doctorgavrielov.co.il (from client screenshots)
+
+The client supplied screenshots of the live **English** site. They revealed the real
+look is **gray/charcoal, not white**, with a gold serif name banner + the doctor's
+photo. Changes:
+
+- **Palette pivoted to gray.** The default theme is now the live site's gray/charcoal
+  canvas + gold + white text (kept a light theme as an alternative; default switched to
+  the gray theme in `useTheme`).
+- **Banner** added: the doctor's **photo** (self-hosted at `public/dr-gavrielov.jpg`)
+  beside the signature **gold, outlined serif** title "Welcome to the site of /
+  Dr. G. Gavrielov" (serif used *only* here, matching the original).
+- **Navigation rebuilt to mirror the .co.il menu** (translatable, 4 languages):
+  Dr Gavrielov – Crystal Healing → Home · About → new page · Store → inert · Crystal
+  Secrets → Stone library · Courses & Workshops → Lectures · Stone Apothecary → inert ·
+  Clinic → inert · Contact → new page · Company Policy → new page.
+- **New pages** (full content, all 4 languages): **About** (her bio), **Contact**
+  (form + clinic phone/fax/email/address), **Company Policy** (full Terms & Conditions).
+- All new copy flows through i18n (`src/i18n/pages.js`) in **FR/EN/RU/HE** and switches
+  with the language toggle. HE/RU/FR are machine-translated — recommend a human review
+  before production, especially the legal Company Policy text.
+- We deliberately **keep our clean React layout/components/buttons** rather than copying
+  the original's broken table/sidebar HTML structure.
+
 ## Notes & boundaries
 
 - **Navigation inventory** still follows the app's real routes (Home, Lectures, Stone

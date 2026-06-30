@@ -56,6 +56,9 @@ export default {
         // carries Hebrew + Latin gracefully and matches that utilitarian feel;
         // emphasis comes from weight + gold, not from a serif.
         sans: ["Heebo", "Assistant", "Arial", "system-ui", "Segoe UI", "sans-serif"],
+        // Serif only for the gold banner title (the signature look of the
+        // original site). Frank Ruhl Libre carries Hebrew + Latin.
+        display: ["'Frank Ruhl Libre'", "Georgia", "'Times New Roman'", "serif"],
       },
       keyframes: {
         "fade-in": {
