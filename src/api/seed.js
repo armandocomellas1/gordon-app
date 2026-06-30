@@ -19,11 +19,13 @@ const EN_SAMPLE =
 
 /** @typedef {"pending"|"in_progress"|"done"} TStatus */
 
-// "Diagnosis & Healing with Crystals" — Part 1 (12 lessons). Real recorded
-// Hebrew lectures, streamed from YouTube; the cover image is the video's own
-// thumbnail. Durations are taken from the source Wix course steps.
+// "Diagnosis & Healing with Crystals" — recorded Hebrew lectures streamed from
+// YouTube; the cover image is the video's own thumbnail. Durations are taken
+// from the source Wix course steps. Part 1 = 12 lessons, Part 2 = 11 lessons.
 const PART1_TITLE_HE = "חלק א׳ — אבחון וריפוי באמצעות גבישים";
 const PART1_TITLE_EN = "Part 1 — Diagnosis & Healing with Crystals";
+const PART2_TITLE_HE = "חלק ב׳ — אבחון וריפוי באמצעות גבישים";
+const PART2_TITLE_EN = "Part 2 — Diagnosis & Healing with Crystals";
 
 // [order, youtubeId, duration_seconds]
 const PART1 = [
@@ -41,17 +43,32 @@ const PART1 = [
   [12, "kcmCulUj_b4", 9086], // 02:31:26
 ];
 
-export function buildSeedLectures() {
-  return PART1.map(([order, youtubeId, dur]) => ({
+// Part 2 — lessons 13–23.
+const PART2 = [
+  [13, "slBNmIBQE-c", 9289], // 02:34:49
+  [14, "kpaSKTYFczA", 9089], // 02:31:29
+  [15, "00YsrFfwS98", 9042], // 02:30:42
+  [16, "gquprqyTVHc", 10450], // 02:54:10
+  [17, "3z-eErHwjyY", 9776], // 02:42:56
+  [18, "xiKgmMsakeM", 9356], // 02:35:56
+  [19, "nFcxjHSKIiU", 9794], // 02:43:14
+  [20, "QvsB38sAACw", 8053], // 02:14:13
+  [21, "jJf-I1whddU", 8315], // 02:18:35
+  [22, "pHhyVVnGm1o", 8335], // 02:18:55
+  [23, "EzTBrcKJSYg", 8371], // 02:19:31
+];
+
+function lecturesForPart(part, titleHe, titleEn, rows) {
+  return rows.map(([order, youtubeId, dur]) => ({
     order,
-    code: `P1L${String(order).padStart(2, "0")}`,
-    part: 1,
-    part_title_he: PART1_TITLE_HE,
-    part_title_en: PART1_TITLE_EN,
+    code: `P${part}L${String(order).padStart(2, "0")}`,
+    part,
+    part_title_he: titleHe,
+    part_title_en: titleEn,
     title_he: `ד״ר גילה גבריאלוב — שיעור ${order}`,
     title_en: `Dr. Gila Gavrielov — Lesson ${order}`,
-    description_he: `שיעור ${order} מתוך ${PART1_TITLE_HE}.`,
-    description_en: `Lesson ${order} of ${PART1_TITLE_EN}.`,
+    description_he: `שיעור ${order} מתוך ${titleHe}.`,
+    description_en: `Lesson ${order} of ${titleEn}.`,
     thumbnail_url: `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`,
     duration_seconds: dur,
     video_provider: "youtube",
@@ -61,6 +78,13 @@ export function buildSeedLectures() {
     free_preview: order === 1,
     is_published: true,
   }));
+}
+
+export function buildSeedLectures() {
+  return [
+    ...lecturesForPart(1, PART1_TITLE_HE, PART1_TITLE_EN, PART1),
+    ...lecturesForPart(2, PART2_TITLE_HE, PART2_TITLE_EN, PART2),
+  ];
 }
 
 // Where each "in_progress" lecture sits in the pipeline — chosen to show a

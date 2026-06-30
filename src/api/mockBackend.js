@@ -207,7 +207,7 @@ export function createMockClient() {
   // returning demo visitors (whose localStorage holds an older course) get the
   // new lectures instead of a stale copy. Only the seed-derived content
   // collections are rebuilt; user data (Enrollment/Progress) is left intact.
-  const SEED_VERSION = "2026-06-crystals-part1";
+  const SEED_VERSION = "2026-06-crystals-part2";
   if (localStorage.getItem(NS + "__seed_version") !== SEED_VERSION) {
     write("Lecture", stampRows(buildSeedLectures()));
     write("TranslationJob", stampRows(buildSeedTranslationJobs(read("Lecture"))));

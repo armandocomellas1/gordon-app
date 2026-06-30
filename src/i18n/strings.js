@@ -20,7 +20,7 @@ export const strings = {
     "nav.logout": "Déconnexion",
     "lang.switch": "Switch to English",
 
-    "home.hero.kicker": "Cours en ligne · 12 conférences",
+    "home.hero.kicker": "Cours en ligne · 23 conférences",
     "home.hero.title": "Le pont entre les Écritures, la gémologie et la guérison par les pierres",
     "home.hero.body":
       "Un cours complet par le Dr. Gavrielov — gémologue certifiée GIA et docteure en gémologie & comportement humain — reliant les pierres précieuses des Écritures hébraïques à la littérature moderne de la guérison par les cristaux.",
@@ -37,8 +37,8 @@ export const strings = {
     "home.features.updates.body": "Les nouvelles traductions sont publiées au fur et à mesure.",
 
     "lectures.title": "Conférences du cours",
-    "lectures.subtitle": "12 conférences · Hébreu & Français",
-    "lectures.intro": "Bienvenue dans le cours — 12 conférences reliant les pierres précieuses des Écritures à la science de la gémologie et de la guérison. Regardez en hébreu ou en français, à votre rythme.",
+    "lectures.subtitle": "23 conférences · Hébreu & Français",
+    "lectures.intro": "Bienvenue dans le cours — 23 conférences reliant les pierres précieuses des Écritures à la science de la gémologie et de la guérison. Regardez en hébreu ou en français, à votre rythme.",
     "lectures.startHere": "Commencez par l'introduction gratuite",
     "lectures.empty": "Aucune conférence disponible pour l'instant.",
     "lectures.preview": "Aperçu gratuit",
@@ -130,7 +130,7 @@ export const strings = {
 
     "admin.tab.translation": "Pipeline de traduction",
     "pipe.title": "Tableau de bord des traductions (Foreman)",
-    "pipe.subtitle": "Suivre les 12 conférences en cours de traduction Hébreu → Français via HeyGen.",
+    "pipe.subtitle": "Suivre les 23 conférences en cours de traduction Hébreu → Français via HeyGen.",
     "pipe.flow": "Staging LAN → Agent Foreman → Agent Worker → HeyGen → assemblage → publication",
     "pipe.overall.published": "Publiées",
     "pipe.overall.budget": "Budget HeyGen",
@@ -282,7 +282,7 @@ export const strings = {
     "nav.logout": "Sign out",
     "lang.switch": "מעבר לעברית",
 
-    "home.hero.kicker": "Online course · 12 lectures",
+    "home.hero.kicker": "Online course · 23 lectures",
     "home.hero.title": "The bridge between Scripture, gemology and stone healing",
     "home.hero.body":
       "A comprehensive lecture course by Dr. Gavrielov — GIA-trained gemologist and PhD in gemology & human behaviour — connecting the gemstones of the Hebrew Scriptures with the modern body of crystal-healing literature.",
@@ -299,8 +299,8 @@ export const strings = {
     "home.features.updates.body": "New translations are published as they are completed.",
 
     "lectures.title": "Course lectures",
-    "lectures.subtitle": "12 lectures · Hebrew & English",
-    "lectures.intro": "Welcome to the course — 12 lectures bridging the gemstones of Scripture with the science of gemology and healing. Watch in Hebrew or English, at your own pace.",
+    "lectures.subtitle": "23 lectures · Hebrew & English",
+    "lectures.intro": "Welcome to the course — 23 lectures bridging the gemstones of Scripture with the science of gemology and healing. Watch in Hebrew or English, at your own pace.",
     "lectures.startHere": "Start with the free introduction",
     "lectures.empty": "No lectures to show yet.",
     "lectures.preview": "Free preview",
@@ -392,7 +392,7 @@ export const strings = {
 
     "admin.tab.translation": "Translation pipeline",
     "pipe.title": "Translation Dashboard (Foreman)",
-    "pipe.subtitle": "Track the 12 lectures as they are translated Hebrew → English via HeyGen.",
+    "pipe.subtitle": "Track the 23 lectures as they are translated Hebrew → English via HeyGen.",
     "pipe.flow": "LAN staging → Foreman agent → Worker agent → HeyGen → stitch → publish",
     "pipe.overall.published": "Published",
     "pipe.overall.budget": "HeyGen budget",
@@ -544,7 +544,7 @@ export const strings = {
     "nav.logout": "Выйти",
     "lang.switch": "Switch to English",
 
-    "home.hero.kicker": "Онлайн-курс · 12 лекций",
+    "home.hero.kicker": "Онлайн-курс · 23 лекций",
     "home.hero.title": "Мост между Писанием, геммологией и исцелением камнями",
     "home.hero.body":
       "Подробный курс лекций от д-ра Гавриэлов — сертифицированного геммолога GIA и доктора наук в области геммологии и поведения человека — объединяющий драгоценные камни Священного Писания с современной литературой по кристаллотерапии.",
@@ -561,8 +561,8 @@ export const strings = {
     "home.features.updates.body": "Новые переводы публикуются по мере их завершения.",
 
     "lectures.title": "Лекции курса",
-    "lectures.subtitle": "12 лекций · Иврит и русский",
-    "lectures.intro": "Добро пожаловать на курс — 12 лекций, связывающих драгоценные камни Писания с наукой геммологии и исцеления. Смотрите на иврите или русском в удобном темпе.",
+    "lectures.subtitle": "23 лекций · Иврит и русский",
+    "lectures.intro": "Добро пожаловать на курс — 23 лекций, связывающих драгоценные камни Писания с наукой геммологии и исцеления. Смотрите на иврите или русском в удобном темпе.",
     "lectures.startHere": "Начните с бесплатного введения",
     "lectures.empty": "Лекций пока нет.",
     "lectures.preview": "Бесплатный просмотр",
@@ -654,7 +654,7 @@ export const strings = {
 
     "admin.tab.translation": "Конвейер перевода",
     "pipe.title": "Панель управления переводом (Foreman)",
-    "pipe.subtitle": "Отслеживание перевода 12 лекций с иврита на русский через HeyGen.",
+    "pipe.subtitle": "Отслеживание перевода 23 лекций с иврита на русский через HeyGen.",
     "pipe.flow": "LAN-стейджинг → Агент Foreman → Агент Worker → HeyGen → сборка → публикация",
     "pipe.overall.published": "Опубликовано",
     "pipe.overall.budget": "Бюджет HeyGen",
@@ -806,7 +806,7 @@ export const strings = {
     "nav.logout": "יציאה",
     "lang.switch": "Switch to English",
 
-    "home.hero.kicker": "קורס מקוון · 12 הרצאות",
+    "home.hero.kicker": "קורס מקוון · 23 הרצאות",
     "home.hero.title": "הגשר בין הכתובים, הגמולוגיה והריפוי באבנים",
     "home.hero.body":
       "קורס הרצאות מקיף מאת ד״ר גבריאלוב, בעלת תואר בגמולוגיה (GIA) ודוקטורט בגמולוגיה והתנהגות אנושית — המחבר בין אבני החן שבכתבי הקודש לבין ספרות הריפוי המודרנית.",
@@ -823,8 +823,8 @@ export const strings = {
     "home.features.updates.body": "תרגומים חדשים מתפרסמים עם השלמתם.",
 
     "lectures.title": "הרצאות הקורס",
-    "lectures.subtitle": "12 הרצאות · עברית ואנגלית",
-    "lectures.intro": "ברוכים הבאים לקורס — 12 הרצאות המגשרות בין אבני החן שבמקרא לבין מדע הגמולוגיה והריפוי. צפו בעברית או באנגלית, בקצב שלכם.",
+    "lectures.subtitle": "23 הרצאות · עברית ואנגלית",
+    "lectures.intro": "ברוכים הבאים לקורס — 23 הרצאות המגשרות בין אבני החן שבמקרא לבין מדע הגמולוגיה והריפוי. צפו בעברית או באנגלית, בקצב שלכם.",
     "lectures.startHere": "התחילו מההקדמה החופשית",
     "lectures.empty": "אין הרצאות להצגה עדיין.",
     "lectures.preview": "צפייה חופשית",
@@ -916,7 +916,7 @@ export const strings = {
 
     "admin.tab.translation": "צנרת תרגום",
     "pipe.title": "לוח בקרת תרגום (Foreman)",
-    "pipe.subtitle": "מעקב אחר תרגום 12 ההרצאות מעברית לאנגלית דרך HeyGen.",
+    "pipe.subtitle": "מעקב אחר תרגום 23 ההרצאות מעברית לאנגלית דרך HeyGen.",
     "pipe.flow": "סטייג׳ינג ב-LAN → סוכן Foreman → סוכן Worker → HeyGen → תפירה → פרסום",
     "pipe.overall.published": "פורסמו",
     "pipe.overall.budget": "תקציב HeyGen",
