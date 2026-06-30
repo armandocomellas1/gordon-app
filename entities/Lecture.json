@@ -1,16 +1,23 @@
 {
   "name": "Lecture",
   "type": "object",
-  "description": "A single lecture in Dr. Gavrielov's 20-part course. Holds bilingual (Hebrew/English) metadata and a provider-agnostic video source per language.",
+  "description": "A single lecture in Dr. Gila Gavrielov's 'Diagnosis & Healing with Crystals' course. Holds bilingual (Hebrew/English) metadata and a provider-agnostic video source per language.",
   "properties": {
     "order": {
       "type": "number",
-      "description": "Lecture number 1-20, used for ordering."
+      "description": "Lecture number within the course, used for ordering."
     },
     "code": {
       "type": "string",
-      "description": "Source filename code, e.g. L05_C07."
+      "description": "Source step code, e.g. P1L05 (Part 1, Lesson 5)."
     },
+    "part": {
+      "type": "number",
+      "default": 1,
+      "description": "Course part/section this lecture belongs to (1 = Part 1)."
+    },
+    "part_title_he": { "type": "string", "description": "Hebrew title of the part/section." },
+    "part_title_en": { "type": "string", "description": "English title of the part/section." },
     "title_he": { "type": "string", "description": "Hebrew title." },
     "title_en": { "type": "string", "description": "English (AI-translated) title." },
     "description_he": { "type": "string", "description": "Hebrew description." },

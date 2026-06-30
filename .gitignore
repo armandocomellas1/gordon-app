@@ -6,5 +6,8 @@ dist-ssr
 !.env.example
 .DS_Store
 *.log
+
+# Internal project spec — keep out of the repo
+doctorgavrielov-base44-serveravatar-spec.pdf
 .vite
 coverage

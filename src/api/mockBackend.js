@@ -203,6 +203,17 @@ export function createMockClient() {
     /* ignore */
   }
 
+  // Content seed version. BUMP THIS whenever buildSeedLectures() changes so
+  // returning demo visitors (whose localStorage holds an older course) get the
+  // new lectures instead of a stale copy. Only the seed-derived content
+  // collections are rebuilt; user data (Enrollment/Progress) is left intact.
+  const SEED_VERSION = "2026-06-crystals-part1";
+  if (localStorage.getItem(NS + "__seed_version") !== SEED_VERSION) {
+    write("Lecture", stampRows(buildSeedLectures()));
+    write("TranslationJob", stampRows(buildSeedTranslationJobs(read("Lecture"))));
+    localStorage.setItem(NS + "__seed_version", SEED_VERSION);
+  }
+
   // Seed each collection INDEPENDENTLY (not gated on Lecture being empty), so
   // entities added in a later version backfill for users whose localStorage was
   // seeded by an earlier version — no full reset required.

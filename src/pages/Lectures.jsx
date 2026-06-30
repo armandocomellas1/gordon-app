@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { PlayCircle } from "lucide-react";
 import { useI18n } from "@/i18n";
@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/misc";
 
 export default function Lectures() {
-  const { t } = useI18n();
+  const { t, pick } = useI18n();
   useMeta({ title: t("lectures.title"), description: t("lectures.intro") });
   const { user, accessState } = useAuth();
   const [lectures, setLectures] = useState(null);
@@ -45,6 +45,18 @@ export default function Lectures() {
   }, [user?.email]);
 
   const firstPreview = lectures?.find((l) => l.free_preview) || lectures?.[0];
+
+  // Group lectures by course part/section (Part 1, Part 2, …) for headed rows.
+  const groups = useMemo(() => {
+    if (!lectures) return null;
+    const byPart = new Map();
+    for (const l of lectures) {
+      const key = l.part ?? 1;
+      if (!byPart.has(key)) byPart.set(key, []);
+      byPart.get(key).push(l);
+    }
+    return [...byPart.entries()].sort((a, b) => a[0] - b[0]);
+  }, [lectures]);
 
   return (
     <div className="container-page">
@@ -81,14 +93,26 @@ export default function Lectures() {
       ) : lectures.length === 0 ? (
         <p className="text-muted-foreground">{t("lectures.empty")}</p>
       ) : (
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {lectures.map((l) => (
-            <LectureCard
-              key={l.id}
-              lecture={l}
-              locked={!canWatch(l, accessState)}
-              progress={progressMap[l.id]}
-            />
+        <div className="space-y-10">
+          {groups.map(([part, items]) => (
+            <section key={part}>
+              <div className="mb-4 flex items-baseline justify-between gap-3 border-b border-border pb-2">
+                <h2 className="text-lg font-extrabold">{pick(items[0], "part_title")}</h2>
+                <span className="shrink-0 text-sm text-muted-foreground">
+                  {items.length} {t("nav.lectures")}
+                </span>
+              </div>
+              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {items.map((l) => (
+                  <LectureCard
+                    key={l.id}
+                    lecture={l}
+                    locked={!canWatch(l, accessState)}
+                    progress={progressMap[l.id]}
+                  />
+                ))}
+              </div>
+            </section>
           ))}
         </div>
       )}

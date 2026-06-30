@@ -14,7 +14,7 @@ export default function LectureCard({ lecture, locked, progress }) {
     ? Math.min(100, Math.round((progress.position_seconds / lecture.duration_seconds) * 100))
     : 0;
 
-  const enTranslating = lecture.translation_status !== "done";
+  const enInProgress = lecture.translation_status === "in_progress";
   const hasEn = hasTrack(lecture, "en");
 
   return (
@@ -54,7 +54,7 @@ export default function LectureCard({ lecture, locked, progress }) {
           {lecture.free_preview && <Badge tone="success">{t("lectures.preview")}</Badge>}
           {locked && <Badge tone="locked"><Lock className="h-3 w-3" />{t("lectures.locked")}</Badge>}
           {progress?.completed && <Badge tone="primary"><Check className="h-3 w-3" />{t("lectures.completed")}</Badge>}
-          {!hasEn && enTranslating ? (
+          {!hasEn && enInProgress ? (
             <Badge tone="warning"><Loader2 className="h-3 w-3" />{t("lectures.translating")}</Badge>
           ) : !hasEn ? (
             <Badge tone="muted"><Languages className="h-3 w-3" />{t("lectures.he_only")}</Badge>

@@ -4,6 +4,9 @@ import { LANGS, strings } from "./strings";
 const I18nContext = createContext(null);
 const STORAGE_KEY = "gavrielov.lang";
 
+// Order the language toggle cycles through.
+const LANG_ORDER = ["fr", "en", "ru", "he"];
+
 function initialLang() {
   if (typeof window === "undefined") return "fr";
   const saved = localStorage.getItem(STORAGE_KEY);
@@ -38,7 +41,6 @@ export function I18nProvider({ children }) {
     [lang]
   );
 
-  const LANG_ORDER = ["fr", "en", "ru", "he"];
   const toggle = useCallback(() => setLang((l) => {
     const i = LANG_ORDER.indexOf(l);
     return LANG_ORDER[(i + 1) % LANG_ORDER.length];

@@ -13,7 +13,7 @@ export function formatDuration(seconds, minutesLabel = "min") {
   if (m < 60) return `${m} ${minutesLabel}`;
   const h = Math.floor(m / 60);
   const rem = m % 60;
-  return `${h}:${String(rem).padStart(2, "0")}`;
+  return rem ? `${h}h ${rem}m` : `${h}h`;
 }
 
 export function formatDate(iso, lang = "he") {

@@ -1,130 +1,66 @@
 // ─────────────────────────────────────────────────────────────────────────
 // Seed data for DEMO MODE.
 //
-// 20-lecture course bridging gemology, Jewish lore, and crystal healing.
-// Demo video tracks use Blender Foundation open movies (CC-BY) purely as
-// placeholders so reviewers can actually press play — replace video_*_source
-// with real YouTube ids / Mux playback ids / Vimeo ids / URLs in the Admin.
+// Dr. Gila Gavrielov — "Diagnosis & Healing with Crystals" course.
+// Part 1 holds 12 recorded Hebrew lectures streamed from YouTube. English (and
+// other) translations are pending: video_en_source is empty and
+// translation_status is "pending" until a track is published in the Admin.
 //
-// translation_status is deliberately mixed so the Admin "ongoing translated
-// content updates" workflow (pending → in_progress → done) is visible.
+// Bump SEED_VERSION in mockBackend.js whenever this data changes so returning
+// demo visitors get a fresh re-seed instead of a stale localStorage copy.
 // ─────────────────────────────────────────────────────────────────────────
 
 import { chunksForDuration } from "@/lib/translationPipeline";
 
-const HE_SAMPLE =
-  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
+// Kept for buildSeedTranslationJobs' (currently dormant) "done"/"ready" demo
+// branches — a public sample so a published English track could play.
 const EN_SAMPLE =
   "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4";
 
-const thumb = (n) => `https://picsum.photos/seed/gavrielov-${n}/640/360`;
-
 /** @typedef {"pending"|"in_progress"|"done"} TStatus */
 
-const RAW = [
-  ["L01", "מבוא: אבנים במקרא ובמדע", "Introduction: Stones in Scripture and Science",
-    "שיעור פתיחה — הגשר בין הגמולוגיה המודרנית לבין אבני החן בכתבי הקודש.",
-    "Opening lecture — the bridge between modern gemology and the gemstones of Scripture.",
-    1580, "done", true],
-  ["L02", "חושן המשפט: שתים-עשרה האבנים", "The Breastplate (Hoshen): The Twelve Stones",
-    "מבנה החושן, סדר האבנים והקשר לשבטי ישראל.",
-    "Structure of the breastplate, the order of the stones, and the tribes of Israel.",
-    1720, "done", true],
-  ["L03", "זיהוי אבני החן במקרא", "Identifying Biblical Gemstones",
-    "כיצד מתאימים שם עברי עתיק לאבן גמולוגית מוכרת.",
-    "How an ancient Hebrew name is matched to a known gemological mineral.",
-    1990, "done", false],
-  ["L04", "יסודות הגמולוגיה: מבנה הגביש", "Gemology Fundamentals: Crystal Structure",
-    "מערכות גבישיות, שבירה ואור — היסודות המדעיים.",
-    "Crystal systems, refraction and light — the scientific foundations.",
-    2110, "done", false],
-  ["L05", "צבע, אור ואנרגיה באבנים", "Color, Light and Energy in Stones",
-    "כיצד צבע נוצר באבן ומה משמעותו במסורת הריפוי.",
-    "How color arises in a stone and its meaning in the healing tradition.",
-    1875, "done", false],
-  ["L06", "שנים-עשר השבטים ואבניהם", "The Twelve Tribes and Their Stones",
-    "התאמת כל שבט לאבנו, מקורות ומשמעות.",
-    "Matching each tribe to its stone — sources and meaning.",
-    1660, "done", false],
-  ["L07", "אחלמה (אמטיסט): צלילות ואיזון", "Amethyst: Clarity and Sobriety",
-    "האבן השביעית בחושן — היסטוריה, סגולות ושימוש.",
-    "The seventh stone of the breastplate — history, properties and use.",
-    1540, "done", false],
-  ["L08", "אבן הספיר וכיסא הכבוד", "Lapis Lazuli and the Sapphire of the Throne",
-    "ספיר במקרא, לאפיס לזולי, והחזון של כיסא הכבוד.",
-    "Sapphire in Scripture, lapis lazuli, and the vision of the Throne.",
-    2030, "done", false],
-  ["L09", "טיהור והטענת אבנים", "Cleansing and Charging Stones",
-    "שיטות מעשיות לטיהור אבנים והכנתן לשימוש.",
-    "Practical methods for cleansing stones and preparing them for use.",
-    1450, "in_progress", false],
-  ["L10", "תמציות ריפוי: הכנה ושימוש", "Healing Essences: Preparation and Use",
-    "הכנת תמציות אבן, מינונים והוראות שימוש.",
-    "Preparing stone essences, dosing, and usage instructions.",
-    1780, "in_progress", false],
-  ["L11", "אבנים לאיזון רגשי", "Stones for Emotional Balance",
-    "אבנים נגד מתח, חרדה ודכדוך — מסורת ומדע ההתנהגות.",
-    "Stones for tension, anxiety and low mood — tradition and behavioural science.",
-    1690, "in_progress", false],
-  ["L12", "אבנים לחיוניות גופנית", "Stones for Physical Vitality",
-    "אבנים לאנרגיה, חוסן וזרימת דם.",
-    "Stones for energy, resilience and circulation.",
-    1610, "in_progress", false],
-  ["L13", "אבני מגן במסורת", "Protective Stones in Tradition",
-    "אבני שמירה ומגן במקורות ובמנהג.",
-    "Guardian and protective stones in sources and custom.",
-    1500, "pending", false],
-  ["L14", "אבני גן עדן (יחזקאל כ״ח)", "The Garden of Eden Stones (Ezekiel 28)",
-    "תשע האבנים של גן עדן בנבואת יחזקאל.",
-    "The nine stones of Eden in the prophecy of Ezekiel.",
-    1920, "pending", false],
-  ["L15", "בניית ערכת אבנים אישית", "Building a Personal Stone Kit",
-    "כיצד מרכיבים ערכת אבנים מותאמת אישית.",
-    "How to assemble a personalised stone kit.",
-    1350, "pending", false],
-  ["L16", "צמידים ואבנים לנשיאה", "Bracelets and Wearable Stones",
-    "בחירת אבנים לצמידים ולנשיאה יומיומית.",
-    "Choosing stones for bracelets and daily wear.",
-    1280, "pending", false],
-  ["L17", "שיטת אבחון באבנים", "The Stone Diagnosis Method",
-    "מבוא לשיטת האבחון של ד״ר גבריאלוב.",
-    "Introduction to Dr. Gavrielov's diagnosis method.",
-    2240, "pending", false],
-  ["L18", "גבישים והתנהגות אנושית", "Crystals and Human Behaviour",
-    "הקשר בין גבישים, התנהגות ומחקר אקדמי.",
-    "The link between crystals, behaviour and academic research.",
-    2050, "pending", false],
-  ["L19", "אתיקה, בטיחות וגבולות התרגול", "Ethics, Safety and Boundaries of Practice",
-    "גבולות אחריות, בטיחות והפניה לרפואה קונבנציונלית.",
-    "Boundaries of responsibility, safety, and referral to conventional medicine.",
-    1430, "pending", false],
-  ["L20", "אינטגרציה: מן הכתוב אל המעשה", "Integration: From Scripture to Practice",
-    "סיכום הקורס — חיבור התיאוריה לתרגול היומיומי.",
-    "Course summary — connecting theory to daily practice.",
-    1990, "pending", false],
+// "Diagnosis & Healing with Crystals" — Part 1 (12 lessons). Real recorded
+// Hebrew lectures, streamed from YouTube; the cover image is the video's own
+// thumbnail. Durations are taken from the source Wix course steps.
+const PART1_TITLE_HE = "חלק א׳ — אבחון וריפוי באמצעות גבישים";
+const PART1_TITLE_EN = "Part 1 — Diagnosis & Healing with Crystals";
+
+// [order, youtubeId, duration_seconds]
+const PART1 = [
+  [1, "GLIANXTOQJs", 8590], // 02:23:10
+  [2, "2fSfppn-_HY", 9375], // 02:36:15
+  [3, "fssFqlJy-mw", 9284], // 02:34:44
+  [4, "t3wfG97hgzc", 8657], // 02:24:17
+  [5, "s9QPO0qKzN0", 8528], // 02:22:08
+  [6, "2W9Q-gcdsCY", 9476], // 02:37:56
+  [7, "fk8fWbDIawY", 8760], // 02:26:00
+  [8, "YOiKa1PUe0A", 9364], // 02:36:04
+  [9, "6_UDFKMy0oc", 8913], // 02:28:33
+  [10, "SjB1WpXC-_E", 9368], // 02:36:08
+  [11, "6BBHclPfyWw", 8805], // 02:26:45
+  [12, "kcmCulUj_b4", 9086], // 02:31:26
 ];
 
 export function buildSeedLectures() {
-  return RAW.map(([code, title_he, title_en, desc_he, desc_en, dur, status, free], i) => {
-    const order = i + 1;
-    const done = status === "done";
-    return {
-      order,
-      code,
-      title_he,
-      title_en,
-      description_he: desc_he,
-      description_en: desc_en,
-      thumbnail_url: thumb(order),
-      duration_seconds: dur,
-      video_provider: "direct",
-      video_he_source: HE_SAMPLE,
-      video_en_source: done ? EN_SAMPLE : "",
-      translation_status: status,
-      free_preview: !!free,
-      is_published: true,
-    };
-  });
+  return PART1.map(([order, youtubeId, dur]) => ({
+    order,
+    code: `P1L${String(order).padStart(2, "0")}`,
+    part: 1,
+    part_title_he: PART1_TITLE_HE,
+    part_title_en: PART1_TITLE_EN,
+    title_he: `ד״ר גילה גבריאלוב — שיעור ${order}`,
+    title_en: `Dr. Gila Gavrielov — Lesson ${order}`,
+    description_he: `שיעור ${order} מתוך ${PART1_TITLE_HE}.`,
+    description_en: `Lesson ${order} of ${PART1_TITLE_EN}.`,
+    thumbnail_url: `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`,
+    duration_seconds: dur,
+    video_provider: "youtube",
+    video_he_source: youtubeId,
+    video_en_source: "",
+    translation_status: "pending",
+    free_preview: order === 1,
+    is_published: true,
+  }));
 }
 
 // Where each "in_progress" lecture sits in the pipeline — chosen to show a
